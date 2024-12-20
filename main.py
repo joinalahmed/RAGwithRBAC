@@ -123,7 +123,9 @@ class AzureSearchService:
             if user_groups==['finance_group']:
                 user_groups = ['finance_group',"all_employees"]
             filter_str = f"group_ids/any(g: search.in(g, '{','.join(user_groups)}'))"
+            print('*'*100)
             print(filter_str)
+            print('*'*100)
             # Determine search type based on parameters
             search_type = "similarity"
             if full_text:
@@ -293,8 +295,9 @@ async def search():
     """Handle search requests with RAG support."""
     try:
         data = request.get_json()
-        query = data.get('query')
-        user_group = data.get('user_group')
+        query = data.get('search_query')
+        user_group = data.get('group_id')
+        search_options = data.get('search_options', {})
         full_text = data.get('full_text', False)
         exact_match = data.get('exact_match', False)
         
@@ -308,7 +311,6 @@ async def search():
             full_text=full_text,
             exact_match=exact_match
         )
-        print(results)
         return jsonify(results)
         
     except Exception as e:
@@ -333,7 +335,6 @@ async def generate_answer():
             context=context,
             sources=sources
         )
-        print(result)
         return jsonify(result)
         
     except Exception as e:

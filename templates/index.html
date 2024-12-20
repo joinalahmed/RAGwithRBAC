@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contoso Compass | Enterprise Knowledge Search</title>
+    <!-- External Dependencies -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
+
+    <style>
+        /* Base Layout Variables */
+        :root {
+            --header-height: 64px;
+            --footer-height: 48px;
+        }
+
+        /* Main Layout Styles */
+        .main-content {
+            padding-top: var(--header-height);
+            padding-bottom: var(--footer-height);
+            min-height: 100vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        /* Custom Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f3f4f6;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+
+        /* Search Container Animation - Updated */
+        .search-container {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+            position: relative;
+        }
+        .search-container.fixed {
+            position: sticky;
+            top: var(--header-height);
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            z-index: 40;
+        }
+
+        /* Add these new styles */
+        .search-container .container {
+            max-width: 1280px; /* or whatever your container max-width is */
+            margin: 0 auto;
+        }
+
+        .search-container .max-w-2xl {
+            width: 100%;
+            max-width: 42rem; /* equivalent to max-w-2xl */
+            margin: 0 auto;
+        }
+
+        /* Loading Spinner Animation */
+        .loader {
+            border: 3px solid #e5e7eb;
+            border-top: 3px solid #4f46e5;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Search Result Item Hover Effect */
+        .result-item {
+            transition: all 0.3s ease-in-out;
+            border-left: 4px solid transparent;
+        }
+        .result-item:hover {
+            transform: translateY(-2px);
+            border-left-color: #6366f1; /* Indigo-500 */
+        }
+
+        /* Content Fade Effect */
+        .content-fade {
+            position: relative;
+            max-height: 150px;
+            overflow: hidden;
+        }
+        .content-fade::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: linear-gradient(to top, white, transparent);
+        }
+        .content-fade.expanded {
+            max-height: none;
+        }
+        .content-fade.expanded::after {
+            display: none;
+        }
+
+        /* Modal Backdrop Effect */
+        .modal-backdrop {
+            backdrop-filter: blur(4px);
+        }
+
+        /* Slide Animation Effects */
+        @keyframes slide-in {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slide-out {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+        .animate-slide-in {
+            animation: slide-in 0.3s ease-out;
+        }
+        .animate-slide-out {
+            animation: slide-out 0.3s ease-in;
+        }
+
+        /* RAG Answer Styling */
+        .rag-answer {
+            background: linear-gradient(135deg, #f5f3ff 0%, #ffffff 100%);
+            border-left: 4px solid #6366f1;
+            box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.1);
+            width: 100%;
+        }
+        .rag-answer pre {
+            background: #f8fafc;
+            border-radius: 6px;
+            padding: 1rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+        .rag-answer code {
+            background: #f1f5f9;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+
+        /* Source Citation Styling */
+        .source-citation {
+            border-left: 2px solid #e5e7eb;
+            transition: border-color 0.2s ease;
+        }
+        .source-citation:hover {
+            border-left-color: #3b82f6;
+        }
+
+        /* RAG Answer Card - Increased width */
+        #ragAnswerCard {
+            width: 100%;
+            max-width: 64rem; /* Changed from 48rem (max-w-3xl) to 64rem (max-w-4xl) */
+            margin: 0 auto;
+        }
+
+        /* Search Results Container - Increased width */
+        #searchResults {
+            width: 100%;
+            max-width: 64rem; /* Changed from 48rem (max-w-3xl) to 64rem (max-w-4xl) */
+            margin: 0 auto;
+        }
+
+        /* Retrieved Documents Header - Match new width */
+        #retrievedDocumentsHeader {
+            width: 100%;
+            max-width: 64rem; /* Added to match other containers */
+            margin: 0 auto;
+        }
+
+        /* Content Container Styles */
+        #ragAnswerCard,
+        #searchResults,
+        #retrievedDocumentsHeader {
+            position: relative;
+            z-index: 30;
+        }
+
+        /* Add these new animation styles */
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-slide-in {
+            animation: fadeSlideIn 0.5s ease-out forwards;
+        }
+
+        /* Update the results container styles */
+        .results-wrapper {
+            opacity: 0;
+        }
+
+        .results-wrapper.visible {
+            opacity: 1;
+            transition: opacity 0.3s ease-out;
+        }
+
+        /* Update the example questions styling */
+        .example-question {
+            background: linear-gradient(135deg, #fff 0%, #f3f4f6 100%);
+            transition: all 0.3s ease-in-out;
+        }
+        .example-question:hover {
+            background: linear-gradient(135deg, #fff 0%, #e0e7ff 100%);
+            transform: translateY(-2px);
+        }
+
+        /* Chatbot Widget Styles */
+        .chat-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .chat-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #4f46e5;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .chat-button:hover {
+            transform: scale(1.1);
+            background: #4338ca;
+        }
+
+        .chat-window {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        .chat-window.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        .chat-header {
+            padding: 1rem;
+            background: #4f46e5;
+            color: white;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            background: #f9fafb;
+        }
+
+        .chat-input-container {
+            padding: 1rem;
+            border-top: 1px solid #e5e7eb;
+            background: white;
+            border-radius: 0 0 12px 12px;
+        }
+
+        .chat-input-wrapper {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 0.5rem 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 9999px;
+            outline: none;
+        }
+
+        .chat-input:focus {
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
+        }
+
+        .message {
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            border-radius: 8px;
+            max-width: 80%;
+        }
+
+        .message.bot {
+            background: white;
+            margin-right: auto;
+            border: 1px solid #e5e7eb;
+        }
+
+        .message.user {
+            background: #4f46e5;
+            color: white;
+            margin-left: auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Fixed Header -->
+    <header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
+        <div class="container mx-auto px-4">
+            <div class="h-16 flex items-center justify-between">
+                <!-- Brand Logo and Name -->
+                <div class="flex items-center space-x-4">
+                    <a href="/" class="flex items-center space-x-2 group">
+                        <svg class="h-8 w-8 text-indigo-600 transition-transform group-hover:scale-110" 
+                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                        </svg>
+                        <span class="text-xl font-bold text-gray-900">Contoso Compass</span>
+                    </a>
+                </div>
+
+                <!-- User Controls -->
+                <div class="flex items-center space-x-6">
+                    <!-- Employee Profile Dropdown -->
+                    <div class="relative">
+                        <button 
+                            id="profileDropdown"
+                            class="flex items-center space-x-3 group"
+                            aria-expanded="false"
+                        >
+                            <!-- Profile Avatar - Only shows initials -->
+                            <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center">
+                                <span class="text-sm font-medium text-indigo-700">PS</span>
+                            </div>
+                            <!-- Profile Info - Shows full name and group -->
+                            <div class="text-left">
+                                <p class="text-sm font-medium text-gray-700 group-hover:text-gray-900" id="currentUserName">Priya Sharma</p>
+                                <p class="text-xs text-gray-500" id="currentUserGroup">all_employees</p>
+                            </div>
+                            <!-- Dropdown Arrow -->
+                            <svg class="w-5 h-5 text-gray-400 group-hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <!-- Profile Menu -->
+                        <div 
+                            id="profileMenu"
+                            class="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-lg py-1 hidden
+                                   ring-1 ring-black ring-opacity-5 divide-y divide-gray-100"
+                        >
+                            <!-- Current Profile Section -->
+                            <div class="px-4 py-3">
+                                <p class="text-sm font-medium text-gray-900" id="currentUserEmail">priya.sharma@contoso.com</p>
+                                <p class="text-sm text-gray-500 truncate">ID: <span id="currentUserId">EMP001</span></p>
+                            </div>
+
+                            <!-- Profiles Section -->
+                            <div class="py-2">
+                                <p class="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                                    Switch Profile
+                                </p>
+                                <button 
+                                    type="button"
+                                    data-group-id="all_employees"
+                                    data-user-name="Priya Sharma"
+                                    data-user-email="priya.sharma@contoso.com"
+                                    data-user-id="EMP001"
+                                    data-user-initials="PS"
+                                    class="w-full flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 group bg-gray-50"
+                                    onclick="switchProfile(this)"
+                                >
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <span class="text-sm font-medium text-indigo-700">PS</span>
+                                    </div>
+                                    <div class="text-left">
+                                        <p class="font-medium group-hover:text-gray-900">Priya Sharma</p>
+                                        <p class="text-xs text-gray-500">all_employees</p>
+                                    </div>
+                                    <svg class="ml-auto h-5 w-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                </button>
+                                <!-- Repeat for other profiles with correct initials and group_id -->
+                                <button 
+                                    type="button"
+                                    data-group-id="management"
+                                    data-user-name="Rajesh Patel"
+                                    data-user-email="rajesh.patel@contoso.com"
+                                    data-user-id="MGT001"
+                                    data-user-initials="RP"
+                                    class="w-full flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 group"
+                                    onclick="switchProfile(this)"
+                                >
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <span class="text-sm font-medium text-indigo-700">RP</span>
+                                    </div>
+                                    <div class="text-left">
+                                        <p class="font-medium group-hover:text-gray-900">Rajesh Patel</p>
+                                        <p class="text-xs text-gray-500">management</p>
+                                    </div>
+                                </button>
+                                <button 
+                                    type="button"
+                                    data-group-id="hr_group"
+                                    data-user-name="Anjali Desai"
+                                    data-user-email="anjali.desai@contoso.com"
+                                    data-user-id="HR002"
+                                    data-user-initials="AD"
+                                    class="w-full flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 group"
+                                    onclick="switchProfile(this)"
+                                >
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <span class="text-sm font-medium text-indigo-700">AD</span>
+                                    </div>
+                                    <div class="text-left">
+                                        <p class="font-medium group-hover:text-gray-900">Anjali Desai</p>
+                                        <p class="text-xs text-gray-500">hr_group</p>
+                                    </div>
+                                </button>
+                                <button 
+                                    type="button"
+                                    data-group-id="finance_group"
+                                    data-user-name="Arjun Mehta"
+                                    data-user-email="arjun.mehta@contoso.com"
+                                    data-user-id="FIN003"
+                                    data-user-initials="AM"
+                                    class="w-full flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 group"
+                                    onclick="switchProfile(this)"
+                                >
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <span class="text-sm font-medium text-indigo-700">AM</span>
+                                    </div>
+                                    <div class="text-left">
+                                        <p class="font-medium group-hover:text-gray-900">Arjun Mehta</p>
+                                        <p class="text-xs text-gray-500">finance_group</p>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Theme Toggle Button -->
+                    <button 
+                        id="themeToggle"
+                        class="p-2 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        aria-label="Toggle theme"
+                    >
+                        <svg class="h-5 w-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Search Section -->
+        <div id="searchContainer" class="search-container">
+            <div class="container mx-auto px-4 pt-20">
+                <!-- Search Box -->
+                <div class="max-w-2xl mx-auto">
+                    <form id="searchForm" class="relative" autocomplete="off">
+                        <div class="relative flex">
+                            <input 
+                                type="search" 
+                                id="searchQuery"
+                                name="searchQuery"
+                                class="w-full pl-12 pr-4 py-3 text-lg border border-gray-300 rounded-l-xl shadow-sm
+                                       placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                placeholder="Search documents..."
+                                autocomplete="off"
+                            >
+                            <div class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
+                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </div>
+                            <button 
+                                type="submit"
+                                class="px-6 bg-indigo-600 hover:bg-indigo-700 text-white rounded-r-xl flex items-center justify-center transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            >
+                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                                <span class="ml-2">Search</span>
+                            </button>
+                        </div>
+
+                        <!-- Search Options -->
+                        <div class="mt-3 flex items-center justify-between text-sm text-gray-600">
+                            <div class="flex items-center space-x-4">
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="fullText" class="rounded text-blue-600 focus:ring-blue-500">
+                                    <span>Full text search</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="exactMatch" class="rounded text-blue-600 focus:ring-blue-500">
+                                    <span>Exact match</span>
+                                </label>
+                            </div>
+                            <button
+                                type="button"
+                                id="advancedSearch"
+                                class="text-blue-600 hover:text-blue-700 focus:outline-none"
+                            >
+                                Advanced filters
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Search Tips -->
+                    <div class="mt-4 text-center text-sm text-gray-500">
+                        <p>Discover insights across your organization's knowledge base</p>
+                        <p class="mt-2">
+                            Press <kbd class="px-2 py-1 bg-gray-100 rounded">/</kbd> to search | 
+                            Use <kbd class="px-2 py-1 bg-gray-100 rounded">↑</kbd> 
+                            <kbd class="px-2 py-1 bg-gray-100 rounded">↓</kbd> to navigate
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Update the example questions section -->
+                <div id="exampleQuestions" class="max-w-2xl mx-auto mt-8">
+                    <p class="text-sm text-gray-500 mb-3">Try asking about:</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button 
+                            class="example-question aspect-square p-6 text-sm bg-white hover:bg-indigo-50 text-gray-600 hover:text-indigo-700 
+                                   rounded-xl border border-gray-200 hover:border-indigo-200 transition-colors duration-200
+                                   flex items-center justify-center text-center shadow-sm hover:shadow-md"
+                            data-query="What is Contoso's employee bands and salary structure?"
+                        >
+                            What is Contoso's employee bands and salary structure?
+                        </button>
+                        <button 
+                            class="example-question aspect-square p-6 text-sm bg-white hover:bg-indigo-50 text-gray-600 hover:text-indigo-700 
+                                   rounded-xl border border-gray-200 hover:border-indigo-200 transition-colors duration-200
+                                   flex items-center justify-center text-center shadow-sm hover:shadow-md"
+                            data-query="How do I request time off, and how many days can I take?"
+                        >
+                            How do I request time off, and how many days can I take?
+                        </button>
+                        <button 
+                            class="example-question aspect-square p-6 text-sm bg-white hover:bg-indigo-50 text-gray-600 hover:text-indigo-700 
+                                   rounded-xl border border-gray-200 hover:border-indigo-200 transition-colors duration-200
+                                   flex items-center justify-center text-center shadow-sm hover:shadow-md"
+                            data-query="What are our security guidelines for employee data?"
+                        >
+                            What are our security guidelines for employee data?
+                        </button>
+                        <button 
+                            class="example-question aspect-square p-6 text-sm bg-white hover:bg-indigo-50 text-gray-600 hover:text-indigo-700 
+                                   rounded-xl border border-gray-200 hover:border-indigo-200 transition-colors duration-200
+                                   flex items-center justify-center text-center shadow-sm hover:shadow-md"
+                            data-query="Explain our Employee Promotion Process."
+                        >
+                            Explain our Employee Promotion Process.
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Loading Indicator -->
+                <div id="loadingIndicator" class="hidden mt-8">
+                    <div class="flex justify-center items-center space-x-3">
+                        <div class="loader"></div>
+                        <span class="text-gray-600">Searching documents...</span>
+                    </div>
+                </div>
+
+                <!-- Update the results containers structure -->
+                <div id="resultsWrapper" class="results-wrapper w-full max-w-4xl mx-auto mt-8 mb-16 space-y-8">
+                    <!-- RAG Answer Card -->
+                    <div id="ragAnswerCard" class="fade-slide-in hidden">
+                        <div class="rag-answer bg-white rounded-xl shadow-sm p-6 w-full">
+                            <!-- Answer Header -->
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center">
+                                    <svg class="h-6 w-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                    </svg>
+                                    <h3 class="text-lg font-semibold text-gray-900">AI Summary</h3>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <span id="tokenCount" class="text-sm text-gray-500"></span>
+                                    <button 
+                                        onclick="regenerateAnswer()"
+                                        class="text-blue-600 hover:text-blue-700 focus:outline-none p-1 hover:bg-blue-50 rounded-full"
+                                        title="Regenerate answer"
+                                    >
+                                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Answer Content -->
+                            <div id="ragAnswer" class="prose prose-blue max-w-none"></div>
+                        </div>
+                    </div>
+
+                    <!-- Retrieved Documents Section Header -->
+                    <div id="retrievedDocumentsHeader" class="fade-slide-in hidden">
+                        <div class="flex items-center">
+                            <div class="flex-grow border-t border-gray-200"></div>
+                            <h2 class="mx-4 text-lg font-semibold text-gray-700">Retrieved Documents</h2>
+                            <div class="flex-grow border-t border-gray-200"></div>
+                        </div>
+                    </div>
+
+                    <!-- Search Results Container -->
+                    <div id="searchResults" class="fade-slide-in space-y-6">
+                        <!-- Search results will be dynamically inserted here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Fixed Footer -->
+    <footer class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-40">
+        <div class="container mx-auto px-4">
+            <div class="h-12 flex items-center justify-between">
+                <span class="text-sm text-gray-600">© 2024 Contoso Compass - Enterprise Knowledge Search</span>
+                <div class="flex items-center space-x-6">
+                    <button 
+                        id="feedback"
+                        class="text-sm text-gray-600 hover:text-gray-900 focus:outline-none"
+                    >
+                        Send feedback
+                    </button>
+                    <button 
+                        id="toggleUpload" 
+                        class="text-sm text-indigo-600 hover:text-indigo-700 focus:outline-none"
+                    >
+                        Upload Document
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Upload Modal -->
+    <div id="uploadModal" class="fixed inset-0 bg-black bg-opacity-30 modal-backdrop hidden z-50">
+        <div class="min-h-screen px-4 flex items-center justify-center">
+            <div class="bg-white rounded-xl shadow-xl max-w-md w-full">
+                <!-- Modal Header -->
+                <div class="flex items-center justify-between p-6 border-b border-gray-200">
+                    <h3 class="text-xl font-semibold text-gray-900">Upload Document</h3>
+                    <button id="closeUpload" class="text-gray-400 hover:text-gray-500">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Upload Form -->
+                <form id="uploadForm" class="p-6 space-y-6">
+                    <!-- File Input -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Document
+                        </label>
+                        <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg">
+                            <div class="space-y-1 text-center">
+                                <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
+                                    <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4-4m4-4h8m-4-4v8m-12 4h.02" 
+                                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <div class="flex text-sm text-gray-600">
+                                    <label class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500">
+                                        <span>Upload a file</span>
+                                        <input type="file" name="document" class="sr-only" required>
+                                    </label>
+                                    <p class="pl-1">or drag and drop</p>
+                                </div>
+                                <p class="text-xs text-gray-500">
+                                    PDF, DOC, DOCX, TXT up to 10MB
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Access Group Selection -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Access Group
+                        </label>
+                        <select 
+                            name="group" 
+                            required
+                            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 rounded-md"
+                        >
+                            <option value="">Select a group</option>
+                            {% for group_id, group_name in user_groups.items() %}
+                                <option value="{{ group_id }}" {% if group_id == 'all_employees' %}selected{% endif %}>
+                                    {{ group_name }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="flex items-center justify-end space-x-3">
+                        <button 
+                            type="button"
+                            class="px-4 py-2 text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 
+                                   focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 rounded-md"
+                            onclick="document.getElementById('uploadModal').classList.add('hidden')"
+                        >
+                            Cancel
+                        </button>
+                        <button 
+                            type="submit"
+                            class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 rounded-md"
+                        >
+                            Upload
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast Container -->
+    <div id="toastContainer" class="fixed top-4 right-4 z-50 space-y-4"></div>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <div class="chat-button" id="chatToggle">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                    d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+            </svg>
+        </div>
+        
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div class="flex items-center">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                            d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+                    </svg>
+                    <span class="font-semibold">Support Chat</span>
+                </div>
+                <button class="text-white hover:text-gray-200" id="chatClose">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">
+                    Hello! 👋 How can I help you today?
+                </div>
+            </div>
+            
+            <div class="chat-input-container">
+                <div class="chat-input-wrapper">
+                    <input type="text" class="chat-input" id="chatInput" placeholder="Type your message...">
+                    <button class="text-white bg-indigo-600 rounded-full p-2 hover:bg-indigo-700" id="chatSend">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Core Elements: Centralize DOM element references
+        const elements = {};
+        
+        // Application State Management
+        const state = {
+            hasSearched: false,
+            currentSearchTerm: '',
+            searchTimeout: null,
+            currentResults: []
+        };
+
+        // Initialize Interface
+        function initializeInterface() {
+            // Initialize element references
+            elements.searchForm = document.getElementById('searchForm');
+            elements.searchQuery = document.getElementById('searchQuery');
+            elements.searchResults = document.getElementById('searchResults');
+            elements.loadingIndicator = document.getElementById('loadingIndicator');
+            elements.searchContainer = document.getElementById('searchContainer');
+            elements.uploadModal = document.getElementById('uploadModal');
+            elements.toggleUpload = document.getElementById('toggleUpload');
+            elements.closeUpload = document.getElementById('closeUpload');
+            elements.uploadForm = document.getElementById('uploadForm');
+            elements.ragAnswerCard = document.getElementById('ragAnswerCard');
+            elements.ragAnswer = document.getElementById('ragAnswer');
+            elements.profileDropdown = document.getElementById('profileDropdown');
+            elements.profileMenu = document.getElementById('profileMenu');
+
+            // Set up event listeners
+            setupSearch();
+            setupDragAndDrop();
+            setupKeyboardShortcuts();
+            setupThemeToggling();
+            setupUploadModal();
+            setupExampleQuestions();
+            setupProfileDropdown();
+
+            // Focus search if element exists
+            if (elements.searchQuery) {
+                elements.searchQuery.focus();
+            }
+        }
+
+        // Search Functionality
+        function setupSearch() {
+            if (!elements.searchForm) return; // Guard clause
+
+            elements.searchForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                await handleSearch();
+            });
+        }
+
+        // Handle Search
+        async function handleSearch() {
+            if (!elements.searchQuery) {
+                showError('Search functionality is not available');
+                return;
+            }
+            
+            const query = elements.searchQuery.value.trim();
+            if (!query) {
+                showError('Please enter a search query');
+                return;
+            }
+
+            // Show loading state
+            if (elements.loadingIndicator) {
+                elements.loadingIndicator.classList.remove('hidden');
+            }
+            
+            try {
+                // Get current active profile's group ID
+                const activeProfile = document.querySelector('[data-group-id].bg-gray-50');
+                const groupId = activeProfile ? activeProfile.dataset.groupId : 'all_employees';
+
+                // Create the search request payload
+                const searchPayload = {
+                    search_query: query,
+                    group_id: groupId,
+                    search_options: {
+                        full_text: document.getElementById('fullText')?.checked || false,
+                        exact_match: document.getElementById('exactMatch')?.checked || false
+                    }
+                };
+
+                console.log('Search payload:', searchPayload); // Debug log
+
+                // Perform search request
+                const searchResponse = await fetch('/search', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(searchPayload)
+                });
+
+                // Parse response first to get error message if any
+                const responseData = await searchResponse.json();
+
+                if (!searchResponse.ok) {
+                    throw new Error(responseData.error || responseData.message || 'Search request failed');
+                }
+
+                state.currentResults = responseData;
+
+                // Update UI state
+                if (!state.hasSearched) {
+                    elements.searchContainer.classList.add('fixed', 'top-16');
+                    state.hasSearched = true;
+                }
+
+                // Hide example questions if they're showing
+                const exampleQuestions = document.getElementById('exampleQuestions');
+                if (exampleQuestions) {
+                    exampleQuestions.style.display = 'none';
+                }
+
+                // Display results
+                displayResults(state.currentResults);
+                
+                // Generate RAG answer if we have results
+                if (state.currentResults.length > 0) {
+                    await generateRagAnswer(query, state.currentResults);
+                } else {
+                    elements.ragAnswerCard?.classList.add('hidden');
+                    showInfo('No results found for your query');
+                }
+
+                showSuccess('Search completed successfully');
+                
+            } catch (error) {
+                console.error('Search error:', error); // Debug log
+                showError(error.message || 'An error occurred while searching');
+                
+                // Clear results and hide RAG answer on error
+                if (elements.searchResults) {
+                    elements.searchResults.innerHTML = '';
+                }
+                elements.ragAnswerCard?.classList.add('hidden');
+            } finally {
+                if (elements.loadingIndicator) {
+                    elements.loadingIndicator.classList.add('hidden');
+                }
+            }
+        }
+
+        // Separate RAG answer generation
+        async function generateRagAnswer(query, results) {
+            try {
+                const context = results.map(r => r.content).join('\n\n');
+                const ragResponse = await fetch('/generate_answer', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        query: query,
+                        context: context,
+                        sources: results.map(r => ({
+                            title: r.title,
+                            score: r.score
+                        }))
+                    })
+                });
+
+                if (!ragResponse.ok) {
+                    throw new Error('Failed to generate AI answer');
+                }
+
+                const ragResult = await ragResponse.json();
+                displayRagAnswer(ragResult);
+            } catch (error) {
+                showError('Failed to generate AI answer');
+                console.error('RAG error:', error);
+            }
+        }
+
+        // Update the displayResults function
+        function displayResults(results) {
+            if (!elements.searchResults) return;
+
+            const resultsWrapper = document.getElementById('resultsWrapper');
+            resultsWrapper.classList.remove('visible');
+
+            // Clear previous results
+            elements.searchResults.innerHTML = '';
+            
+            if (results.length === 0) {
+                elements.searchResults.innerHTML = `
+                    <div class="text-center py-8 text-gray-500 fade-slide-in">
+                        No results found for your search.
+                    </div>
+                `;
+                return;
+            }
+
+            const header = document.getElementById('retrievedDocumentsHeader');
+            if (header) {
+                header.classList.remove('hidden');
+            }
+
+            results.forEach((result, index) => {
+                const resultElement = document.createElement('div');
+                resultElement.className = 'result-item bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-all duration-300 fade-slide-in';
+                resultElement.style.animationDelay = `${index * 0.1}s`;
+                
+                // Calculate score color based on score value
+                const score = Math.round(result.score * 100);
+                const scoreClass = score >= 90 ? 'bg-emerald-100 text-emerald-800' :
+                                  score >= 70 ? 'bg-emerald-100 text-emerald-800' :
+                                  score >= 50 ? 'bg-emerald-100 text-emerald-800' : 
+                                  'bg-emerald-100 text-emerald-800';
+                
+                resultElement.innerHTML = `
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="text-lg font-semibold text-gray-900">${result.title}</h3>
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${scoreClass}">
+                            ${score}% Match
+                        </span>
+                    </div>
+                    <p class="text-gray-600 mb-4">${result.content}</p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <span class="flex items-center">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            ${result.source || 'Unknown'}
+                        </span>
+                    </div>
+                `;
+                elements.searchResults.appendChild(resultElement);
+            });
+
+            // Show results with animation
+            setTimeout(() => {
+                resultsWrapper.classList.add('visible');
+            }, 100);
+        }
+
+        // Setup Example Questions
+        function setupExampleQuestions() {
+            const exampleQuestionsDiv = document.getElementById('exampleQuestions');
+            if (!exampleQuestionsDiv) return;
+
+            // Handle clicks on example questions
+            document.querySelectorAll('.example-question').forEach(button => {
+                button.addEventListener('click', async () => {
+                    if (!elements.searchQuery) return;
+                    const query = button.getAttribute('data-query');
+                    elements.searchQuery.value = query;
+                    await handleSearch();
+                });
+            });
+        }
+
+        // Setup Theme Toggling
+        function setupThemeToggling() {
+            const themeToggle = document.getElementById('themeToggle');
+            if (!themeToggle) return;
+
+            // ... theme toggle implementation ...
+        }
+
+        // Setup Keyboard Shortcuts
+        function setupKeyboardShortcuts() {
+            document.addEventListener('keydown', (e) => {
+                // ... keyboard shortcuts implementation ...
+            });
+        }
+
+        // Setup Upload Modal
+        function setupUploadModal() {
+            if (!elements.uploadModal || !elements.toggleUpload || !elements.closeUpload || !elements.uploadForm) return;
+
+            // Toggle modal visibility
+            elements.toggleUpload.addEventListener('click', () => {
+                elements.uploadModal.classList.remove('hidden');
+            });
+
+            elements.closeUpload.addEventListener('click', () => {
+                elements.uploadModal.classList.add('hidden');
+            });
+
+            // Close modal when clicking outside
+            elements.uploadModal.addEventListener('click', (e) => {
+                if (e.target === elements.uploadModal) {
+                    elements.uploadModal.classList.add('hidden');
+                }
+            });
+
+            // Handle file upload
+            elements.uploadForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const formData = new FormData(elements.uploadForm);
+                const fileInput = elements.uploadForm.querySelector('input[type="file"]');
+                const file = fileInput.files[0];
+
+                if (!file) {
+                    showError('Please select a file to upload');
+                    return;
+                }
+
+                try {
+                    const response = await fetch('/upload', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    const result = await response.json();
+
+                    if (!response.ok) {
+                        throw new Error(result.error || 'Upload failed');
+                    }
+
+                    showSuccess('Document uploaded successfully');
+                    elements.uploadModal.classList.add('hidden');
+                    elements.uploadForm.reset();
+
+                } catch (error) {
+                    showError(error.message || 'Failed to upload document');
+                }
+            });
+
+            // Setup drag and drop
+            setupDragAndDrop();
+        }
+
+        // Setup Drag and Drop
+        function setupDragAndDrop() {
+            const dropZone = document.querySelector('.border-dashed');
+            const fileInput = document.querySelector('input[type="file"]');
+            if (!dropZone || !fileInput) return;
+
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropZone.addEventListener(eventName, preventDefaults, false);
+            });
+
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropZone.addEventListener(eventName, () => {
+                    dropZone.classList.add('border-indigo-500', 'bg-indigo-50');
+                });
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropZone.addEventListener(eventName, () => {
+                    dropZone.classList.remove('border-indigo-500', 'bg-indigo-50');
+                });
+            });
+
+            dropZone.addEventListener('drop', (e) => {
+                const dt = e.dataTransfer;
+                const files = dt.files;
+
+                fileInput.files = files;
+                
+                // Update the file name display if you have one
+                const fileName = files[0]?.name;
+                if (fileName) {
+                    const fileNameDisplay = dropZone.querySelector('p');
+                    if (fileNameDisplay) {
+                        fileNameDisplay.textContent = fileName;
+                    }
+                }
+            });
+
+            // Add click handler for the entire drop zone
+            dropZone.addEventListener('click', () => {
+                fileInput.click();
+            });
+
+            // Update file name display when file is selected through the input
+            fileInput.addEventListener('change', () => {
+                const fileName = fileInput.files[0]?.name;
+                if (fileName) {
+                    const fileNameDisplay = dropZone.querySelector('p');
+                    if (fileNameDisplay) {
+                        fileNameDisplay.textContent = fileName;
+                    }
+                }
+            });
+        }
+
+        // Setup Profile Dropdown
+        function setupProfileDropdown() {
+            if (!elements.profileDropdown || !elements.profileMenu) return;
+
+            // Toggle dropdown on click
+            elements.profileDropdown.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isExpanded = elements.profileDropdown.getAttribute('aria-expanded') === 'true';
+                elements.profileDropdown.setAttribute('aria-expanded', !isExpanded);
+                elements.profileMenu.classList.toggle('hidden');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!elements.profileDropdown.contains(e.target)) {
+                    elements.profileDropdown.setAttribute('aria-expanded', 'false');
+                    elements.profileMenu.classList.add('hidden');
+                }
+            });
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeInterface();
+        });
+
+        // Toast Notification System
+        const toast = {
+            container: null,
+            
+            init() {
+                // Create toast container if it doesn't exist
+                if (!this.container) {
+                    this.container = document.getElementById('toastContainer');
+                    if (!this.container) {
+                        this.container = document.createElement('div');
+                        this.container.id = 'toastContainer';
+                        this.container.className = 'fixed top-4 right-4 z-50 space-y-4';
+                        document.body.appendChild(this.container);
+                    }
+                }
+            },
+
+            show(message, type = 'error') {
+                this.init();
+
+                // Create toast element
+                const toastEl = document.createElement('div');
+                toastEl.className = `
+                    flex items-center p-4 rounded-lg shadow-lg transform transition-all duration-300
+                    ${type === 'error' ? 'bg-red-50 text-red-700 border border-red-200' : 
+                      type === 'success' ? 'bg-green-50 text-green-700 border border-green-200' : 
+                      'bg-blue-50 text-blue-700 border border-blue-200'}
+                `;
+
+                // Add icon based on type
+                const iconSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                iconSvg.setAttribute('class', 'w-5 h-5 mr-3');
+                iconSvg.setAttribute('fill', 'none');
+                iconSvg.setAttribute('viewBox', '0 0 24 24');
+                iconSvg.setAttribute('stroke', 'currentColor');
+                
+                const iconPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                iconPath.setAttribute('stroke-linecap', 'round');
+                iconPath.setAttribute('stroke-linejoin', 'round');
+                iconPath.setAttribute('stroke-width', '2');
+                
+                if (type === 'error') {
+                    iconPath.setAttribute('d', 'M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z');
+                } else if (type === 'success') {
+                    iconPath.setAttribute('d', 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z');
+                } else {
+                    iconPath.setAttribute('d', 'M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z');
+                }
+                
+                iconSvg.appendChild(iconPath);
+                toastEl.appendChild(iconSvg);
+
+                // Add message
+                const messageEl = document.createElement('span');
+                messageEl.className = 'text-sm font-medium';
+                messageEl.textContent = message;
+                toastEl.appendChild(messageEl);
+
+                // Add close button
+                const closeButton = document.createElement('button');
+                closeButton.className = 'ml-auto pl-3';
+                closeButton.innerHTML = `
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                `;
+                closeButton.onclick = () => toastEl.remove();
+                toastEl.appendChild(closeButton);
+
+                // Add to container
+                this.container.appendChild(toastEl);
+
+                // Auto remove after 5 seconds
+                setTimeout(() => {
+                    toastEl.classList.add('opacity-0', 'translate-x-full');
+                    setTimeout(() => toastEl.remove(), 300);
+                }, 5000);
+            }
+        };
+
+        // Error Handler Function
+        function showError(message) {
+            toast.show(message, 'error');
+        }
+
+        // Success Handler Function
+        function showSuccess(message) {
+            toast.show(message, 'success');
+        }
+
+        // Info Handler Function
+        function showInfo(message) {
+            toast.show(message, 'info');
+        }
+
+        // Update the displayRagAnswer function
+        function displayRagAnswer(ragResult) {
+            if (!elements.ragAnswerCard || !elements.ragAnswer) return;
+
+            // Show the RAG answer card with animation
+            elements.ragAnswerCard.classList.remove('hidden');
+            elements.ragAnswerCard.style.animationDelay = '0s';
+
+            // Convert markdown to HTML and set the content
+            elements.ragAnswer.innerHTML = marked.parse(ragResult.answer);
+
+            // Update token count if available
+            const tokenCount = document.getElementById('tokenCount');
+            if (tokenCount && ragResult.token_count) {
+                tokenCount.textContent = `${ragResult.token_count} tokens`;
+            }
+
+            // Smooth scroll to results
+            document.getElementById('resultsWrapper').scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+        }
+
+        // Add regenerateAnswer function for completeness
+        async function regenerateAnswer() {
+            if (!state.currentResults || !elements.searchQuery) return;
+            
+            const query = elements.searchQuery.value.trim();
+            if (!query) return;
+            
+            try {
+                await generateRagAnswer(query, state.currentResults);
+                showSuccess('Answer regenerated successfully');
+            } catch (error) {
+                showError('Failed to regenerate answer');
+                console.error('Regeneration error:', error);
+            }
+        }
+
+        // Update the switchProfile function
+        function switchProfile(buttonElement) {
+            // Get user data from button attributes
+            const groupId = buttonElement.dataset.groupId;
+            const userName = buttonElement.dataset.userName;
+            const userEmail = buttonElement.dataset.userEmail;
+            const userId = buttonElement.dataset.userId;
+            const userInitials = buttonElement.dataset.userInitials;
+
+            // Update header profile display
+            const profileButton = document.getElementById('profileDropdown');
+            if (profileButton) {
+                // Update avatar initials
+                const avatarSpan = profileButton.querySelector('.rounded-full span');
+                if (avatarSpan) avatarSpan.textContent = userInitials;
+
+                // Update name and group
+                const nameElement = document.getElementById('currentUserName');
+                const groupElement = document.getElementById('currentUserGroup');
+                if (nameElement) nameElement.textContent = userName;
+                if (groupElement) groupElement.textContent = groupId;
+            }
+
+            // Update current profile section in dropdown
+            const currentEmail = document.getElementById('currentUserEmail');
+            const currentId = document.getElementById('currentUserId');
+            if (currentEmail) currentEmail.textContent = userEmail;
+            if (currentId) currentId.textContent = userId;
+
+            // Update active indicators
+            document.querySelectorAll('[data-group-id]').forEach(button => {
+                button.classList.remove('bg-gray-50');
+                const svg = button.querySelector('svg');
+                if (svg) svg.remove();
+            });
+
+            // Add active state and checkmark to selected button
+            buttonElement.classList.add('bg-gray-50');
+            buttonElement.insertAdjacentHTML('beforeend', `
+                <svg class="ml-auto h-5 w-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+            `);
+
+            // Perform search with new group if there's an active search
+            if (state.hasSearched && elements.searchQuery.value.trim()) {
+                handleSearch();
+            }
+
+            // Close the dropdown
+            const profileMenu = document.getElementById('profileMenu');
+            if (profileMenu) profileMenu.classList.add('hidden');
+            
+            // Update aria-expanded state
+            if (profileButton) profileButton.setAttribute('aria-expanded', 'false');
+
+            // Show feedback
+            showSuccess(`Switched to ${userName}'s profile`);
+        }
+
+        // Chat Widget Functionality
+        function initializeChatWidget() {
+            const chatToggle = document.getElementById('chatToggle');
+            const chatWindow = document.getElementById('chatWindow');
+            const chatClose = document.getElementById('chatClose');
+            const chatInput = document.getElementById('chatInput');
+            const chatSend = document.getElementById('chatSend');
+            const chatMessages = document.getElementById('chatMessages');
+
+            function toggleChat() {
+                chatWindow.classList.toggle('active');
+            }
+
+            function closeChat() {
+                chatWindow.classList.remove('active');
+            }
+
+            function sendMessage() {
+                const message = chatInput.value.trim();
+                if (!message) return;
+
+                // Add user message
+                addMessage(message, 'user');
+                chatInput.value = '';
+
+                // Simulate bot response
+                setTimeout(() => {
+                    addMessage("Thanks for your message! This is a dummy response from the support bot.", 'bot');
+                }, 1000);
+            }
+
+            function addMessage(text, type) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${type}`;
+                messageDiv.textContent = text;
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            // Event Listeners
+            chatToggle.addEventListener('click', toggleChat);
+            chatClose.addEventListener('click', closeChat);
+            chatSend.addEventListener('click', sendMessage);
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+        }
+
+        // Initialize chat widget when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeChatWidget();
+        });
+    </script>
+</body>
+</html>
