@@ -1,0 +1,106 @@
+**Confidential HR Documentation: Compensation Guidelines**
+
+**1. Salary Bands and Structures**
+
+**Objective:** Establish clear salary bands to ensure internal equity and external competitiveness.
+
+**Salary Bands:**
+- **Band 1:** Entry Level (e.g., Interns, Trainees)
+  - Salary Range: $40,000 - $55,000
+- **Band 2:** Junior Level (e.g., Coordinators, Assistants)
+  - Salary Range: $55,000 - $70,000
+- **Band 3:** Mid-Level (e.g., Specialists, Managers)
+  - Salary Range: $70,000 - $90,000
+- **Band 4:** Senior Level (e.g., Senior Managers, Directors)
+  - Salary Range: $90,000 - $130,000
+- **Band 5:** Executive Level (e.g., VP, C-suite)
+  - Salary Range: $130,000 and above
+
+**Structure:**
+- Salaries within each band should be aligned based on experience, education, and performance.
+- Annual salary reviews should be conducted to adjust bands based on market trends and internal equity.
+
+**2. Performance-Based Compensation**
+
+**Objective:** Link compensation to individual and organizational performance.
+
+**Performance Metrics:**
+- Individual Performance Metrics (IPM): Based on annual performance reviews, assessing achievement against pre-defined KPIs.
+- Team/Department Performance Metrics (TPM): Based on the performance of the team or department as a whole.
+
+**Formula:**
+- Total Performance Bonus = Base Salary x Performance Multiplier
+  - Performance Multiplier: Defined as follows:
+    - Exceeds Expectations: 1.20
+    - Meets Expectations: 1.00
+    - Below Expectations: 0.80
+
+**3. Bonus Calculation Methods**
+
+**Objective:** Incentivize employees through structured bonus programs.
+
+**Annual Bonus Structure:**
+- Target Bonus as a percentage of base salary:
+  - Band 1: 5%
+  - Band 2: 10%
+  - Band 3: 15%
+  - Band 4: 20%
+  - Band 5: 30%
+
+**Bonus Calculation Formula:**
+- Annual Bonus = Base Salary x Target Bonus Percentage x Performance Multiplier
+
+**Example Calculation for Band 3 Employee:**
+- Base Salary = $80,000
+- Target Bonus = 15% = $12,000
+- Performance Multiplier = 1.20 (Exceeds Expectations)
+- Annual Bonus = $80,000 x 0.15 x 1.20 = $14,400
+
+**4. Equity Compensation Policies**
+
+**Objective:** Attract and retain talent through equity ownership in the company.
+
+**Types of Equity Compensation:**
+- Stock Options
+- Restricted Stock Units (RSUs)
+
+**Vesting Schedule:**
+- Standard vesting period of four years with a one-year cliff.
+- After the cliff, equity vests monthly over the remaining three years.
+
+**Equity Calculation Example:**
+- For an employee receiving options worth $50,000:
+  - Number of options granted = Value of Options / Strike Price
+    - Assume Strike Price = $10; Number of Options = $50,000 / $10 = 5,000 options.
+
+**5. Executive Compensation Framework**
+
+**Objective:** Provide a competitive compensation package to attract and retain top executives.
+
+**Components of Executive Compensation:**
+- Base Salary
+- Annual Cash Bonus
+- Long-term Incentives (LTI) – Stock Options or RSUs
+- Benefits and Perks
+
+**Executive Salary Structure:**
+- Salaries determined by benchmarking against similar organizations:
+  - CEO: $200,000 - $500,000
+  - VP Levels: $150,000 - $300,000
+
+**LTI Calculation Example:**
+- LTI granted as a percentage of base salary:
+  - CEO: 100% of base salary in stock options/RSUs.
+  
+**Total Executive Compensation Formula:**
+- Total Comp = Base Salary + Annual Cash Bonus + Long-term Incentives + Benefits Value
+
+---
+
+**Confidential Procedures:**
+
+1. **Annual Review Process:** Compensation structures will be reviewed annually by HR and Finance to ensure alignment with market rates and company performance.
+2. **Confidentiality Requirement:** All compensation data must remain confidential and shared only with authorized personnel.
+3. **Documentation:** All compensation decisions must be documented, including the rationale for deviations from standard policies.
+
+These guidelines should be reviewed and updated periodically to adapt to changes in market conditions and internal company strategies.

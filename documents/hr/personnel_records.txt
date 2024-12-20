@@ -1,0 +1,1050 @@
+Employee ID: 1
+Name: Alex Williams
+Address: 724 Oak Lane, Franklin, FL 19252
+Phone Number: (368) 257-5998
+Email: alex.williams@example.com
+Social Security Number: XXX-XX-1788
+
+Department: Marketing
+Level: Mid-level
+Base Salary: $172491/year
+Bonus: Eligible for 6% performance-based bonus
+Paid Time Off (PTO): 18 days/year
+
+Performance Review:
+  - Rating: Exceeds Expectations
+  - Strengths: Technical Expertise, Teamwork, Communication
+  - Areas for Improvement: Creativity, Time Management
+
+Training and Development:
+  - Advanced Python, Cloud Infrastructure
+----------------------------------------
+Employee ID: 2
+Name: Emily Smith
+Address: 184 Pine Drive, Franklin, IL 40148
+Phone Number: (347) 665-9168
+Email: emily.smith@techcorp.com
+Social Security Number: XXX-XX-7083
+
+Department: Marketing
+Level: Manager
+Base Salary: $99548/year
+Bonus: Eligible for 6% performance-based bonus
+Paid Time Off (PTO): 17 days/year
+
+Performance Review:
+  - Rating: Meets Expectations
+  - Strengths: Communication, Technical Expertise, Problem Solving
+  - Areas for Improvement: Time Management, Creativity
+
+Training and Development:
+  - Team Collaboration, Agile Practices
+----------------------------------------
+Employee ID: 3
+Name: Taylor Jones
+Address: 622 Maple Avenue, Riverside, IL 51017
+Phone Number: (523) 920-8340
+Email: taylor.jones@techcorp.com
+Social Security Number: XXX-XX-2359
+
+Department: Engineering
+Level: Junior
+Base Salary: $115259/year
+Bonus: Eligible for 16% performance-based bonus
+Paid Time Off (PTO): 23 days/year
+
+Performance Review:
+  - Rating: Below Expectations
+  - Strengths: Leadership, Teamwork, Communication
+  - Areas for Improvement: Time Management, Punctuality
+
+Training and Development:
+  - Cloud Infrastructure, Advanced Python
+----------------------------------------
+Employee ID: 4
+Name: Ryan Smith
+Address: 656 Elm Street, Fairview, CA 21357
+Phone Number: (787) 433-4631
+Email: ryan.smith@cloudnet.com
+Social Security Number: XXX-XX-8341
+
+Department: Product
+Level: Director
+Base Salary: $122928/year
+Bonus: Eligible for 18% performance-based bonus
+Paid Time Off (PTO): 15 days/year
+
+Performance Review:
+  - Rating: Exceeds Expectations
+  - Strengths: Leadership, Technical Expertise, Problem Solving
+  - Areas for Improvement: Creativity, Time Management
+
+Training and Development:
+  - Agile Practices, Cloud Infrastructure
+----------------------------------------
+Employee ID: 5
+Name: Jordan Davis
+Address: 887 Oak Lane, Fairview, IL 60860
+Phone Number: (694) 137-8283
+Email: jordan.davis@techcorp.com
+Social Security Number: XXX-XX-1834
+
+Department: Marketing
+Level: Mid-level
+Base Salary: $117898/year
+Bonus: Eligible for 17% performance-based bonus
+Paid Time Off (PTO): 21 days/year
+
+Performance Review:
+  - Rating: Exceeds Expectations
+  - Strengths: Teamwork, Leadership, Communication
+  - Areas for Improvement: Creativity, Punctuality
+
+Training and Development:
+  - Agile Practices, Advanced Python
+----------------------------------------
+Employee ID: 6
+Name: Jordan Smith
+Address: 184 Oak Lane, Springfield, TX 57278
+Phone Number: (802) 855-7525
+Email: jordan.smith@example.com
+Social Security Number: XXX-XX-1126
+
+Department: Human Resources
+Level: Manager
+Base Salary: $68962/year
+Bonus: Eligible for 5% performance-based bonus
+Paid Time Off (PTO): 15 days/year
+
+Performance Review:
+  - Rating: Below Expectations
+  - Strengths: Communication, Technical Expertise, Leadership
+  - Areas for Improvement: Punctuality, Time Management
+
+Training and Development:
+  - Agile Practices, Cloud Infrastructure
+----------------------------------------
+Employee ID: 7
+Name: Jane Williams
+Address: 446 Maple Avenue, Fairview, CA 88999
+Phone Number: (536) 792-5962
+Email: jane.williams@example.com
+Social Security Number: XXX-XX-6930
+
+Department: Engineering
+Level: Manager
+Base Salary: $63711/year
+Bonus: Eligible for 17% performance-based bonus
+Paid Time Off (PTO): 24 days/year
+
+Performance Review:
+  - Rating: Exceeds Expectations
+  - Strengths: Communication, Teamwork, Technical Expertise
+  - Areas for Improvement: Creativity, Collaboration
+
+Training and Development:
+  - Agile Practices, Advanced Python
+----------------------------------------
+Employee ID: 8
+Name: Ryan Garcia
+Address: 519 Oak Lane, Springfield, CA 46408
+Phone Number: (784) 262-1312
+Email: ryan.garcia@example.com
+Social Security Number: XXX-XX-2524
+
+Department: Sales
+Level: Mid-level
+Base Salary: $140058/year
+Bonus: Eligible for 9% performance-based bonus
+Paid Time Off (PTO): 24 days/year
+
+Performance Review:
+  - Rating: Below Expectations
+  - Strengths: Technical Expertise, Problem Solving, Leadership
+  - Areas for Improvement: Collaboration, Punctuality
+
+Training and Development:
+  - Advanced Python, Agile Practices
+----------------------------------------
+Employee ID: 9
+Name: Casey Garcia
+Address: 594 Oak Lane, Riverside, IL 56320
+Phone Number: (845) 969-6466
+Email: casey.garcia@futuretech.io
+Social Security Number: XXX-XX-7289
+
+Department: Sales
+Level: Mid-level
+Base Salary: $185999/year
+Bonus: Eligible for 18% performance-based bonus
+Paid Time Off (PTO): 21 days/year
+
+Performance Review:
+  - Rating: Exceeds Expectations
+  - Strengths: Technical Expertise, Leadership, Teamwork
+  - Areas for Improvement: Creativity, Punctuality
+
+Training and Development:
+  - Cloud Infrastructure, Advanced Python
+----------------------------------------
+Employee ID: 10
+Name: Jordan Jones
+Address: 641 Maple Avenue, Franklin, CA 73918
+Phone Number: (348) 430-6548
+Email: jordan.jones@example.com
+Social Security Number: XXX-XX-3043
+
+Department: Human Resources
+Level: Junior
+Base Salary: $173345/year
+Bonus: Eligible for 15% performance-based bonus
+Paid Time Off (PTO): 19 days/year
+
+Performance Review:
+  - Rating: Meets Expectations
+  - Strengths: Technical Expertise, Problem Solving, Communication
+  - Areas for Improvement: Punctuality, Time Management
+
+Training and Development:
+  - Advanced Python, Agile Practices
+----------------------------------------
+Employee ID: 11
+Name: Chris Clark
+Address: 918 Elm Street, Franklin, CA 16111
+Phone Number: (306) 352-1731
+Email: chris.clark@example.com
+Social Security Number: XXX-XX-2081
+
+Department: Product
+Level: Lead
+Base Salary: $150462/year
+Bonus: Eligible for 19% performance-based bonus
+Paid Time Off (PTO): 16 days/year
+
+Performance Review:
+  - Rating: Meets Expectations
+  - Strengths: Technical Expertise, Communication, Leadership
+  - Areas for Improvement: Time Management, Punctuality
+
+Training and Development:
+  - Cloud Infrastructure, Team Collaboration
+----------------------------------------
+Employee ID: 12
+Name: Emily Smith
+Address: 755 Maple Avenue, Riverside, IL 28059
+Phone Number: (943) 604-5228
+Email: emily.smith@example.com
+Social Security Number: XXX-XX-2469
+
+Department: Product
+Level: Lead
+Base Salary: $112636/year
+Bonus: Eligible for 15% performance-based bonus
+Paid Time Off (PTO): 17 days/year
+
+Performance Review:
+  - Rating: Exceeds Expectations
+  - Strengths: Leadership, Problem Solving, Teamwork
+  - Areas for Improvement: Time Management, Collaboration
+
+Training and Development:
+  - Agile Practices, Cloud Infrastructure
+----------------------------------------
+Employee ID: 13
+Name: Morgan Lewis
+Address: 146 Maple Avenue, Riverside, TX 25567
+Phone Number: (284) 392-3295
+Email: morgan.lewis@futuretech.io
+Social Security Number: XXX-XX-2729
+
+Department: Engineering
+Level: Lead
+Base Salary: $181539/year
+Bonus: Eligible for 7% performance-based bonus
+Paid Time Off (PTO): 21 days/year
+
+Performance Review:
+  - Rating: Below Expectations
+  - Strengths: Communication, Teamwork, Problem Solving
+  - Areas for Improvement: Time Management, Creativity
+
+Training and Development:
+  - Cloud Infrastructure, Agile Practices
+----------------------------------------
+Employee ID: 14
+Name: Emily Brown
+Address: 674 Oak Lane, Springfield, FL 61841
+Phone Number: (357) 166-7004
+Email: emily.brown@example.com
+Social Security Number: XXX-XX-3407
+
+Department: Human Resources
+Level: Director
+Base Salary: $101866/year
+Bonus: Eligible for 16% performance-based bonus
+Paid Time Off (PTO): 21 days/year
+
+Performance Review:
+  - Rating: Exceeds Expectations
+  - Strengths: Problem Solving, Teamwork, Communication
+  - Areas for Improvement: Punctuality, Collaboration
+
+Training and Development:
+  - Cloud Infrastructure, Team Collaboration
+----------------------------------------
+Employee ID: 15
+Name: Alex Williams
+Address: 137 Pine Drive, Springfield, NY 89823
+Phone Number: (457) 230-4748
+Email: alex.williams@example.com
+Social Security Number: XXX-XX-1908
+
+Department: Human Resources
+Level: Manager
+Base Salary: $111601/year
+Bonus: Eligible for 6% performance-based bonus
+Paid Time Off (PTO): 20 days/year
+
+Performance Review:
+  - Rating: Exceeds Expectations
+  - Strengths: Technical Expertise, Leadership, Communication
+  - Areas for Improvement: Collaboration, Time Management
+
+Training and Development:
+  - Cloud Infrastructure, Agile Practices
+----------------------------------------
+Employee ID: 16
+Name: Alex Miller
+Address: 957 Oak Lane, Greenville, CA 93657
+Phone Number: (163) 723-1688
+Email: alex.miller@futuretech.io
+Social Security Number: XXX-XX-6382
+
+Department: IT
+Level: Director
+Base Salary: $144439/year
+Bonus: Eligible for 9% performance-based bonus
+Paid Time Off (PTO): 19 days/year
+
+Performance Review:
+  - Rating: Exceeds Expectations
+  - Strengths: Problem Solving, Teamwork, Technical Expertise
+  - Areas for Improvement: Collaboration, Time Management
+
+Training and Development:
+  - Agile Practices, Cloud Infrastructure
+----------------------------------------
+Employee ID: 17
+Name: Jane Smith
+Address: 201 Cedar Court, Springfield, FL 63209
+Phone Number: (723) 700-7488
+Email: jane.smith@futuretech.io
+Social Security Number: XXX-XX-9126
+
+Department: Sales
+Level: Junior
+Base Salary: $189213/year
+Bonus: Eligible for 7% performance-based bonus
+Paid Time Off (PTO): 25 days/year
+
+Performance Review:
+  - Rating: Meets Expectations
+  - Strengths: Problem Solving, Technical Expertise, Leadership
+  - Areas for Improvement: Collaboration, Punctuality
+
+Training and Development:
+  - Cloud Infrastructure, Agile Practices
+----------------------------------------
+Employee ID: 18
+Name: Alex Miller
+Address: 602 Elm Street, Franklin, IL 63554
+Phone Number: (643) 225-8458
+Email: alex.miller@futuretech.io
+Social Security Number: XXX-XX-1964
+
+Department: IT
+Level: Senior
+Base Salary: $159906/year
+Bonus: Eligible for 15% performance-based bonus
+Paid Time Off (PTO): 24 days/year
+
+Performance Review:
+  - Rating: Below Expectations
+  - Strengths: Communication, Leadership, Technical Expertise
+  - Areas for Improvement: Time Management, Collaboration
+
+Training and Development:
+  - Team Collaboration, Cloud Infrastructure
+----------------------------------------
+Employee ID: 19
+Name: Emily Davis
+Address: 537 Elm Street, Springfield, FL 20475
+Phone Number: (798) 258-8495
+Email: emily.davis@futuretech.io
+Social Security Number: XXX-XX-7256
+
+Department: Sales
+Level: Director
+Base Salary: $108683/year
+Bonus: Eligible for 11% performance-based bonus
+Paid Time Off (PTO): 15 days/year
+
+Performance Review:
+  - Rating: Below Expectations
+  - Strengths: Problem Solving, Leadership, Teamwork
+  - Areas for Improvement: Punctuality, Time Management
+
+Training and Development:
+  - Advanced Python, Team Collaboration
+----------------------------------------
+Employee ID: 20
+Name: John Garcia
+Address: 180 Elm Street, Springfield, IL 93300
+Phone Number: (943) 669-3842
+Email: john.garcia@futuretech.io
+Social Security Number: XXX-XX-9974
+
+Department: Product
+Level: Manager
+Base Salary: $64326/year
+Bonus: Eligible for 16% performance-based bonus
+Paid Time Off (PTO): 18 days/year
+
+Performance Review:
+  - Rating: Meets Expectations
+  - Strengths: Leadership, Teamwork, Communication
+  - Areas for Improvement: Creativity, Collaboration
+
+Training and Development:
+  - Advanced Python, Agile Practices
+----------------------------------------
+Employee ID: 21
+Name: John Clark
+Address: 336 Elm Street, Greenville, FL 81747
+Phone Number: (848) 787-2235
+Email: john.clark@cloudnet.com
+Social Security Number: XXX-XX-1000
+
+Department: IT
+Level: Junior
+Base Salary: $135420/year
+Bonus: Eligible for 13% performance-based bonus
+Paid Time Off (PTO): 23 days/year
+
+Performance Review:
+  - Rating: Meets Expectations
+  - Strengths: Technical Expertise, Problem Solving, Communication
+  - Areas for Improvement: Creativity, Collaboration
+
+Training and Development:
+  - Agile Practices, Team Collaboration
+----------------------------------------
+Employee ID: 22
+Name: Jane Lewis
+Address: 983 Maple Avenue, Springfield, FL 84818
+Phone Number: (503) 942-2492
+Email: jane.lewis@example.com
+Social Security Number: XXX-XX-7909
+
+Department: Marketing
+Level: Lead
+Base Salary: $190879/year
+Bonus: Eligible for 12% performance-based bonus
+Paid Time Off (PTO): 18 days/year
+
+Performance Review:
+  - Rating: Exceeds Expectations
+  - Strengths: Teamwork, Leadership, Technical Expertise
+  - Areas for Improvement: Punctuality, Collaboration
+
+Training and Development:
+  - Cloud Infrastructure, Advanced Python
+----------------------------------------
+Employee ID: 23
+Name: Jane Brown
+Address: 945 Pine Drive, Springfield, FL 81226
+Phone Number: (857) 661-6778
+Email: jane.brown@example.com
+Social Security Number: XXX-XX-6291
+
+Department: Marketing
+Level: Manager
+Base Salary: $196033/year
+Bonus: Eligible for 12% performance-based bonus
+Paid Time Off (PTO): 22 days/year
+
+Performance Review:
+  - Rating: Meets Expectations
+  - Strengths: Teamwork, Communication, Problem Solving
+  - Areas for Improvement: Creativity, Time Management
+
+Training and Development:
+  - Cloud Infrastructure, Team Collaboration
+----------------------------------------
+Employee ID: 24
+Name: Jane Clark
+Address: 876 Cedar Court, Franklin, IL 42693
+Phone Number: (304) 933-8848
+Email: jane.clark@example.com
+Social Security Number: XXX-XX-5866
+
+Department: Product
+Level: Senior
+Base Salary: $167442/year
+Bonus: Eligible for 7% performance-based bonus
+Paid Time Off (PTO): 24 days/year
+
+Performance Review:
+  - Rating: Meets Expectations
+  - Strengths: Leadership, Teamwork, Communication
+  - Areas for Improvement: Creativity, Punctuality
+
+Training and Development:
+  - Team Collaboration, Advanced Python
+----------------------------------------
+Employee ID: 25
+Name: Jordan Garcia
+Address: 118 Elm Street, Franklin, TX 65064
+Phone Number: (254) 873-5172
+Email: jordan.garcia@cloudnet.com
+Social Security Number: XXX-XX-8738
+
+Department: Engineering
+Level: Senior
+Base Salary: $89373/year
+Bonus: Eligible for 8% performance-based bonus
+Paid Time Off (PTO): 16 days/year
+
+Performance Review:
+  - Rating: Below Expectations
+  - Strengths: Communication, Technical Expertise, Problem Solving
+  - Areas for Improvement: Creativity, Time Management
+
+Training and Development:
+  - Advanced Python, Team Collaboration
+----------------------------------------
+Employee ID: 26
+Name: Taylor Smith
+Address: 701 Elm Street, Springfield, IL 94204
+Phone Number: (794) 968-3077
+Email: taylor.smith@innovate.ai
+Social Security Number: XXX-XX-4354
+
+Department: Human Resources
+Level: Director
+Base Salary: $101693/year
+Bonus: Eligible for 13% performance-based bonus
+Paid Time Off (PTO): 21 days/year
+
+Performance Review:
+  - Rating: Meets Expectations
+  - Strengths: Teamwork, Technical Expertise, Problem Solving
+  - Areas for Improvement: Punctuality, Collaboration
+
+Training and Development:
+  - Agile Practices, Cloud Infrastructure
+----------------------------------------
+Employee ID: 27
+Name: Jordan Davis
+Address: 453 Pine Drive, Franklin, NY 21237
+Phone Number: (131) 804-8334
+Email: jordan.davis@techcorp.com
+Social Security Number: XXX-XX-4567
+
+Department: Product
+Level: Junior
+Base Salary: $162303/year
+Bonus: Eligible for 15% performance-based bonus
+Paid Time Off (PTO): 24 days/year
+
+Performance Review:
+  - Rating: Exceeds Expectations
+  - Strengths: Problem Solving, Communication, Teamwork
+  - Areas for Improvement: Creativity, Time Management
+
+Training and Development:
+  - Team Collaboration, Cloud Infrastructure
+----------------------------------------
+Employee ID: 28
+Name: Chris Davis
+Address: 411 Cedar Court, Riverside, FL 52021
+Phone Number: (430) 575-8709
+Email: chris.davis@example.com
+Social Security Number: XXX-XX-2558
+
+Department: Human Resources
+Level: Senior
+Base Salary: $97309/year
+Bonus: Eligible for 20% performance-based bonus
+Paid Time Off (PTO): 25 days/year
+
+Performance Review:
+  - Rating: Exceeds Expectations
+  - Strengths: Teamwork, Problem Solving, Communication
+  - Areas for Improvement: Punctuality, Collaboration
+
+Training and Development:
+  - Team Collaboration, Cloud Infrastructure
+----------------------------------------
+Employee ID: 29
+Name: Casey Davis
+Address: 273 Cedar Court, Fairview, CA 76045
+Phone Number: (462) 369-1722
+Email: casey.davis@example.com
+Social Security Number: XXX-XX-9683
+
+Department: Product
+Level: Director
+Base Salary: $174476/year
+Bonus: Eligible for 14% performance-based bonus
+Paid Time Off (PTO): 24 days/year
+
+Performance Review:
+  - Rating: Below Expectations
+  - Strengths: Teamwork, Leadership, Communication
+  - Areas for Improvement: Punctuality, Creativity
+
+Training and Development:
+  - Team Collaboration, Cloud Infrastructure
+----------------------------------------
+Employee ID: 30
+Name: John Brown
+Address: 138 Pine Drive, Franklin, TX 34298
+Phone Number: (890) 987-4099
+Email: john.brown@techcorp.com
+Social Security Number: XXX-XX-9148
+
+Department: Engineering
+Level: Lead
+Base Salary: $167745/year
+Bonus: Eligible for 14% performance-based bonus
+Paid Time Off (PTO): 18 days/year
+
+Performance Review:
+  - Rating: Meets Expectations
+  - Strengths: Communication, Technical Expertise, Problem Solving
+  - Areas for Improvement: Punctuality, Time Management
+
+Training and Development:
+  - Team Collaboration, Agile Practices
+----------------------------------------
+Employee ID: 31
+Name: Jane Smith
+Address: 398 Cedar Court, Fairview, FL 62409
+Phone Number: (357) 441-9481
+Email: jane.smith@futuretech.io
+Social Security Number: XXX-XX-5379
+
+Department: Product
+Level: Senior
+Base Salary: $127807/year
+Bonus: Eligible for 19% performance-based bonus
+Paid Time Off (PTO): 23 days/year
+
+Performance Review:
+  - Rating: Exceeds Expectations
+  - Strengths: Leadership, Technical Expertise, Teamwork
+  - Areas for Improvement: Creativity, Collaboration
+
+Training and Development:
+  - Advanced Python, Team Collaboration
+----------------------------------------
+Employee ID: 32
+Name: Casey Smith
+Address: 946 Elm Street, Greenville, FL 84638
+Phone Number: (287) 160-9767
+Email: casey.smith@cloudnet.com
+Social Security Number: XXX-XX-5571
+
+Department: Human Resources
+Level: Mid-level
+Base Salary: $174640/year
+Bonus: Eligible for 10% performance-based bonus
+Paid Time Off (PTO): 23 days/year
+
+Performance Review:
+  - Rating: Below Expectations
+  - Strengths: Technical Expertise, Problem Solving, Communication
+  - Areas for Improvement: Time Management, Creativity
+
+Training and Development:
+  - Agile Practices, Cloud Infrastructure
+----------------------------------------
+Employee ID: 33
+Name: Morgan Jones
+Address: 342 Pine Drive, Springfield, NY 41106
+Phone Number: (528) 646-3325
+Email: morgan.jones@innovate.ai
+Social Security Number: XXX-XX-7339
+
+Department: Product
+Level: Director
+Base Salary: $102427/year
+Bonus: Eligible for 18% performance-based bonus
+Paid Time Off (PTO): 21 days/year
+
+Performance Review:
+  - Rating: Exceeds Expectations
+  - Strengths: Leadership, Technical Expertise, Problem Solving
+  - Areas for Improvement: Time Management, Collaboration
+
+Training and Development:
+  - Team Collaboration, Agile Practices
+----------------------------------------
+Employee ID: 34
+Name: Emily Clark
+Address: 349 Oak Lane, Riverside, IL 88321
+Phone Number: (546) 248-9057
+Email: emily.clark@futuretech.io
+Social Security Number: XXX-XX-4105
+
+Department: Marketing
+Level: Manager
+Base Salary: $65737/year
+Bonus: Eligible for 16% performance-based bonus
+Paid Time Off (PTO): 25 days/year
+
+Performance Review:
+  - Rating: Below Expectations
+  - Strengths: Communication, Leadership, Technical Expertise
+  - Areas for Improvement: Punctuality, Creativity
+
+Training and Development:
+  - Cloud Infrastructure, Agile Practices
+----------------------------------------
+Employee ID: 35
+Name: Alex Davis
+Address: 590 Maple Avenue, Greenville, CA 46655
+Phone Number: (100) 938-4464
+Email: alex.davis@example.com
+Social Security Number: XXX-XX-3962
+
+Department: Engineering
+Level: Director
+Base Salary: $92378/year
+Bonus: Eligible for 8% performance-based bonus
+Paid Time Off (PTO): 24 days/year
+
+Performance Review:
+  - Rating: Exceeds Expectations
+  - Strengths: Leadership, Communication, Technical Expertise
+  - Areas for Improvement: Time Management, Punctuality
+
+Training and Development:
+  - Team Collaboration, Cloud Infrastructure
+----------------------------------------
+Employee ID: 36
+Name: Emily Williams
+Address: 447 Maple Avenue, Greenville, TX 11760
+Phone Number: (846) 663-3795
+Email: emily.williams@futuretech.io
+Social Security Number: XXX-XX-1957
+
+Department: Human Resources
+Level: Lead
+Base Salary: $178664/year
+Bonus: Eligible for 18% performance-based bonus
+Paid Time Off (PTO): 22 days/year
+
+Performance Review:
+  - Rating: Below Expectations
+  - Strengths: Problem Solving, Leadership, Teamwork
+  - Areas for Improvement: Punctuality, Creativity
+
+Training and Development:
+  - Agile Practices, Team Collaboration
+----------------------------------------
+Employee ID: 37
+Name: John Smith
+Address: 594 Oak Lane, Fairview, IL 91367
+Phone Number: (814) 248-8118
+Email: john.smith@innovate.ai
+Social Security Number: XXX-XX-7369
+
+Department: Product
+Level: Lead
+Base Salary: $143446/year
+Bonus: Eligible for 17% performance-based bonus
+Paid Time Off (PTO): 23 days/year
+
+Performance Review:
+  - Rating: Meets Expectations
+  - Strengths: Communication, Problem Solving, Leadership
+  - Areas for Improvement: Time Management, Creativity
+
+Training and Development:
+  - Agile Practices, Cloud Infrastructure
+----------------------------------------
+Employee ID: 38
+Name: Casey Miller
+Address: 995 Pine Drive, Springfield, NY 59562
+Phone Number: (565) 892-6192
+Email: casey.miller@example.com
+Social Security Number: XXX-XX-7107
+
+Department: Sales
+Level: Senior
+Base Salary: $124362/year
+Bonus: Eligible for 16% performance-based bonus
+Paid Time Off (PTO): 18 days/year
+
+Performance Review:
+  - Rating: Meets Expectations
+  - Strengths: Communication, Technical Expertise, Problem Solving
+  - Areas for Improvement: Collaboration, Creativity
+
+Training and Development:
+  - Agile Practices, Advanced Python
+----------------------------------------
+Employee ID: 39
+Name: Emily Williams
+Address: 670 Maple Avenue, Riverside, FL 91730
+Phone Number: (660) 933-9336
+Email: emily.williams@futuretech.io
+Social Security Number: XXX-XX-9623
+
+Department: Sales
+Level: Junior
+Base Salary: $79241/year
+Bonus: Eligible for 20% performance-based bonus
+Paid Time Off (PTO): 25 days/year
+
+Performance Review:
+  - Rating: Exceeds Expectations
+  - Strengths: Problem Solving, Teamwork, Technical Expertise
+  - Areas for Improvement: Punctuality, Time Management
+
+Training and Development:
+  - Team Collaboration, Advanced Python
+----------------------------------------
+Employee ID: 40
+Name: Taylor Clark
+Address: 923 Pine Drive, Springfield, NY 15853
+Phone Number: (196) 301-7113
+Email: taylor.clark@example.com
+Social Security Number: XXX-XX-6662
+
+Department: Sales
+Level: Junior
+Base Salary: $62712/year
+Bonus: Eligible for 14% performance-based bonus
+Paid Time Off (PTO): 21 days/year
+
+Performance Review:
+  - Rating: Exceeds Expectations
+  - Strengths: Problem Solving, Teamwork, Technical Expertise
+  - Areas for Improvement: Punctuality, Time Management
+
+Training and Development:
+  - Agile Practices, Advanced Python
+----------------------------------------
+Employee ID: 41
+Name: Chris Brown
+Address: 437 Pine Drive, Springfield, CA 51317
+Phone Number: (917) 725-7560
+Email: chris.brown@techcorp.com
+Social Security Number: XXX-XX-9905
+
+Department: Product
+Level: Director
+Base Salary: $126032/year
+Bonus: Eligible for 8% performance-based bonus
+Paid Time Off (PTO): 21 days/year
+
+Performance Review:
+  - Rating: Exceeds Expectations
+  - Strengths: Teamwork, Problem Solving, Technical Expertise
+  - Areas for Improvement: Time Management, Punctuality
+
+Training and Development:
+  - Team Collaboration, Cloud Infrastructure
+----------------------------------------
+Employee ID: 42
+Name: Casey Clark
+Address: 710 Elm Street, Fairview, NY 33535
+Phone Number: (495) 478-1281
+Email: casey.clark@futuretech.io
+Social Security Number: XXX-XX-4267
+
+Department: Marketing
+Level: Mid-level
+Base Salary: $146323/year
+Bonus: Eligible for 5% performance-based bonus
+Paid Time Off (PTO): 15 days/year
+
+Performance Review:
+  - Rating: Meets Expectations
+  - Strengths: Communication, Technical Expertise, Leadership
+  - Areas for Improvement: Creativity, Collaboration
+
+Training and Development:
+  - Cloud Infrastructure, Agile Practices
+----------------------------------------
+Employee ID: 43
+Name: Ryan Williams
+Address: 557 Cedar Court, Riverside, IL 36490
+Phone Number: (883) 938-8291
+Email: ryan.williams@futuretech.io
+Social Security Number: XXX-XX-1932
+
+Department: IT
+Level: Lead
+Base Salary: $105555/year
+Bonus: Eligible for 12% performance-based bonus
+Paid Time Off (PTO): 25 days/year
+
+Performance Review:
+  - Rating: Exceeds Expectations
+  - Strengths: Technical Expertise, Teamwork, Leadership
+  - Areas for Improvement: Collaboration, Punctuality
+
+Training and Development:
+  - Advanced Python, Team Collaboration
+----------------------------------------
+Employee ID: 44
+Name: Ryan Clark
+Address: 804 Cedar Court, Greenville, CA 52305
+Phone Number: (597) 557-5689
+Email: ryan.clark@techcorp.com
+Social Security Number: XXX-XX-5814
+
+Department: Human Resources
+Level: Lead
+Base Salary: $106065/year
+Bonus: Eligible for 12% performance-based bonus
+Paid Time Off (PTO): 17 days/year
+
+Performance Review:
+  - Rating: Below Expectations
+  - Strengths: Teamwork, Problem Solving, Communication
+  - Areas for Improvement: Punctuality, Creativity
+
+Training and Development:
+  - Team Collaboration, Advanced Python
+----------------------------------------
+Employee ID: 45
+Name: Alex Lewis
+Address: 228 Maple Avenue, Springfield, NY 34444
+Phone Number: (512) 732-1253
+Email: alex.lewis@cloudnet.com
+Social Security Number: XXX-XX-6547
+
+Department: Human Resources
+Level: Mid-level
+Base Salary: $61832/year
+Bonus: Eligible for 15% performance-based bonus
+Paid Time Off (PTO): 23 days/year
+
+Performance Review:
+  - Rating: Below Expectations
+  - Strengths: Technical Expertise, Problem Solving, Communication
+  - Areas for Improvement: Time Management, Punctuality
+
+Training and Development:
+  - Agile Practices, Advanced Python
+----------------------------------------
+Employee ID: 46
+Name: Taylor Miller
+Address: 214 Oak Lane, Fairview, FL 35745
+Phone Number: (595) 168-4650
+Email: taylor.miller@futuretech.io
+Social Security Number: XXX-XX-8623
+
+Department: Sales
+Level: Senior
+Base Salary: $122804/year
+Bonus: Eligible for 13% performance-based bonus
+Paid Time Off (PTO): 16 days/year
+
+Performance Review:
+  - Rating: Exceeds Expectations
+  - Strengths: Teamwork, Technical Expertise, Leadership
+  - Areas for Improvement: Time Management, Collaboration
+
+Training and Development:
+  - Team Collaboration, Cloud Infrastructure
+----------------------------------------
+Employee ID: 47
+Name: Taylor Lewis
+Address: 737 Elm Street, Fairview, TX 10831
+Phone Number: (804) 122-9699
+Email: taylor.lewis@techcorp.com
+Social Security Number: XXX-XX-8053
+
+Department: Sales
+Level: Manager
+Base Salary: $75625/year
+Bonus: Eligible for 16% performance-based bonus
+Paid Time Off (PTO): 23 days/year
+
+Performance Review:
+  - Rating: Exceeds Expectations
+  - Strengths: Leadership, Communication, Problem Solving
+  - Areas for Improvement: Collaboration, Creativity
+
+Training and Development:
+  - Advanced Python, Team Collaboration
+----------------------------------------
+Employee ID: 48
+Name: Jordan Smith
+Address: 552 Cedar Court, Greenville, FL 12934
+Phone Number: (934) 584-5020
+Email: jordan.smith@cloudnet.com
+Social Security Number: XXX-XX-6777
+
+Department: Product
+Level: Manager
+Base Salary: $179483/year
+Bonus: Eligible for 8% performance-based bonus
+Paid Time Off (PTO): 22 days/year
+
+Performance Review:
+  - Rating: Exceeds Expectations
+  - Strengths: Teamwork, Technical Expertise, Leadership
+  - Areas for Improvement: Punctuality, Time Management
+
+Training and Development:
+  - Cloud Infrastructure, Agile Practices
+----------------------------------------
+Employee ID: 49
+Name: Casey Smith
+Address: 871 Pine Drive, Springfield, CA 84453
+Phone Number: (756) 150-5326
+Email: casey.smith@futuretech.io
+Social Security Number: XXX-XX-2490
+
+Department: Product
+Level: Manager
+Base Salary: $159195/year
+Bonus: Eligible for 13% performance-based bonus
+Paid Time Off (PTO): 16 days/year
+
+Performance Review:
+  - Rating: Meets Expectations
+  - Strengths: Technical Expertise, Problem Solving, Teamwork
+  - Areas for Improvement: Creativity, Time Management
+
+Training and Development:
+  - Advanced Python, Agile Practices
+----------------------------------------
+Employee ID: 50
+Name: Casey Clark
+Address: 720 Maple Avenue, Franklin, NY 70395
+Phone Number: (922) 676-7876
+Email: casey.clark@techcorp.com
+Social Security Number: XXX-XX-4197
+
+Department: Marketing
+Level: Manager
+Base Salary: $130167/year
+Bonus: Eligible for 10% performance-based bonus
+Paid Time Off (PTO): 15 days/year
+
+Performance Review:
+  - Rating: Exceeds Expectations
+  - Strengths: Teamwork, Leadership, Technical Expertise
+  - Areas for Improvement: Time Management, Collaboration
+
+Training and Development:
+  - Advanced Python, Team Collaboration
+----------------------------------------

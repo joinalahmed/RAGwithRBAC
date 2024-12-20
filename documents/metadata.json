@@ -1,0 +1,114 @@
+{
+  "documents/hr/leave_policy.txt": {
+    "type": "hr",
+    "access_level": "public",
+    "groups": [
+      "all_employees"
+    ],
+    "created": "2024-12-20T20:08:35.828823",
+    "title": "Leave Policy",
+    "last_modified": "2024-12-20T20:08:35.828870"
+  },
+  "documents/hr/workplace_safety.txt": {
+    "type": "hr",
+    "access_level": "public",
+    "groups": [
+      "all_employees"
+    ],
+    "created": "2024-12-20T20:08:43.529537",
+    "title": "Workplace Safety",
+    "last_modified": "2024-12-20T20:08:43.529564"
+  },
+  "documents/hr/compensation_guidelines.txt": {
+    "type": "hr",
+    "access_level": "restricted",
+    "groups": [
+      "hr_group",
+      "management"
+    ],
+    "created": "2024-12-20T20:08:50.001078",
+    "title": "Compensation Guidelines",
+    "last_modified": "2024-12-20T20:08:50.001116"
+  },
+  "documents/hr/personnel_records_policies.txt": {
+    "type": "hr",
+    "access_level": "restricted",
+    "groups": [
+      "hr_group"
+    ],
+    "created": "2024-12-20T20:08:55.331343",
+    "title": "Personnel Records Policies",
+    "last_modified": "2024-12-20T20:08:55.331369"
+  },
+  "documents/hr/personnel_records.txt": {
+    "type": "hr",
+    "access_level": "restricted",
+    "groups": [
+      "hr_group"
+    ],
+    "created": "2024-12-20T20:08:57.471526",
+    "title": "Personnel Records",
+    "last_modified": "2024-12-20T20:08:57.471548"
+  },
+  "documents/finance/expense_guidelines.txt": {
+    "type": "finance",
+    "access_level": "public",
+    "groups": [
+      "all_employees"
+    ],
+    "created": "2024-12-20T20:09:05.311420",
+    "title": "Expense Guidelines",
+    "last_modified": "2024-12-20T20:09:05.311443"
+  },
+  "documents/finance/financial_forecasts.txt": {
+    "type": "finance",
+    "access_level": "restricted",
+    "groups": [
+      "finance_group",
+      "management"
+    ],
+    "created": "2024-12-20T20:09:12.252023",
+    "title": "Financial Forecasts",
+    "last_modified": "2024-12-20T20:09:12.252030"
+  },
+  "documents/operations/company_handbook.txt": {
+    "type": "operations",
+    "access_level": "public",
+    "groups": [
+      "all_employees"
+    ],
+    "created": "2024-12-20T20:09:21.955378",
+    "title": "Company Handbook",
+    "last_modified": "2024-12-20T20:09:21.955388"
+  },
+  "documents/operations/strategic_plans.txt": {
+    "type": "operations",
+    "access_level": "restricted",
+    "groups": [
+      "management"
+    ],
+    "created": "2024-12-20T20:09:30.801550",
+    "title": "Strategic Plans",
+    "last_modified": "2024-12-20T20:09:30.801566"
+  },
+  "documents/operations/expansion_plans.txt": {
+    "type": "operations",
+    "access_level": "restricted",
+    "groups": [
+      "management"
+    ],
+    "created": "2024-12-20T20:09:37.143257",
+    "title": "Expansion Plans",
+    "last_modified": "2024-12-20T20:09:37.143278"
+  },
+  "documents/operations/acquisition_plans  .txt": {
+    "type": "operations",
+    "access_level": "restricted",
+    "groups": [
+      "management"
+    ],
+    "created": "2024-12-20T20:09:45.317186",
+    "title": "Acquisition Plans  ",
+    "last_modified": "2024-12-20T20:09:45.317204"
+  }
+}
