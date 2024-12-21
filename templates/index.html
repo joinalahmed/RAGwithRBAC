@@ -11,17 +11,15 @@
     <style>
         /* Base Layout Variables */
         :root {
-            --header-height: 64px;
-            --footer-height: 48px;
+            --header-height: 72px;  /* Increased from 64px */
+            --footer-height: 56px;  /* Increased from 48px */
         }
 
         /* Main Layout Styles */
         .main-content {
-            padding-top: var(--header-height);
-            padding-bottom: var(--footer-height);
             min-height: 100vh;
-            overflow-y: auto;
-            position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Custom Scrollbar Styling */
@@ -42,59 +40,66 @@
 
         /* Search Container Animation - Updated */
         .search-container {
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             width: 100%;
-            position: relative;
+            max-width: 1200px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: calc((var(--header-height) + 25vh) * -1) auto 0;
+            padding: 0 2rem;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .search-container.fixed {
+
+        .search-container.has-results {
+            min-height: auto;
+            margin: 0 auto;
+            justify-content: flex-start;
+            align-items: center;
+            padding-top: calc(var(--header-height) + 0.5rem);
+        }
+
+        /* Update the search form wrapper styles */
+        .search-form-wrapper {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            margin: 0 auto;
+            transform: translateY(calc(var(--header-height) + 15vh));
+        }
+
+        /* Reset transform when showing results */
+        .search-container.has-results .search-form-wrapper {
+            transform: translateY(0);
             position: sticky;
-            top: var(--header-height);
-            left: 0;
-            right: 0;
-            padding: 1rem;
-            background: white;
-            border-bottom: 1px solid #e5e7eb;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            top: calc(var(--header-height) + 0.5rem);
             z-index: 40;
-        }
-
-        /* Add these new styles */
-        .search-container .container {
-            max-width: 1280px; /* or whatever your container max-width is */
-            margin: 0 auto;
-        }
-
-        .search-container .max-w-2xl {
-            width: 100%;
-            max-width: 42rem; /* equivalent to max-w-2xl */
-            margin: 0 auto;
-        }
-
-        /* Loading Spinner Animation */
-        .loader {
-            border: 3px solid #e5e7eb;
-            border-top: 3px solid #4f46e5;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
 
         /* Search Result Item Hover Effect */
         .result-item {
             transition: all 0.3s ease-in-out;
             border-left: 4px solid transparent;
+            width: 100%;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 2rem;  /* Increased from 1.5rem */
+            margin-bottom: 1rem;  /* Reduced margin between items */
         }
         .result-item:hover {
             transform: translateY(-2px);
             border-left-color: #6366f1; /* Indigo-500 */
         }
 
-        /* Content Fade Effect */
+        /* Content Fade Effect - Updated */
         .content-fade {
             position: relative;
             max-height: 150px;
@@ -108,12 +113,12 @@
             right: 0;
             height: 40px;
             background: linear-gradient(to top, white, transparent);
-        }
-        .content-fade.expanded {
-            max-height: none;
+            pointer-events: none; /* Allow clicking through the fade */
+            opacity: 1;
+            transition: opacity 0.3s ease;
         }
         .content-fade.expanded::after {
-            display: none;
+            opacity: 0;
         }
 
         /* Modal Backdrop Effect */
@@ -139,11 +144,21 @@
 
         /* RAG Answer Styling */
         .rag-answer {
-            background: linear-gradient(135deg, #f5f3ff 0%, #ffffff 100%);
-            border-left: 4px solid #6366f1;
-            box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.1);
             width: 100%;
+            max-width: 1200px;
+            background: linear-gradient(135deg, #fff, #f8fafc);
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(99, 102, 241, 0.08);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            padding: 2rem;
+            margin: 1rem auto;
+            transition: all 0.3s ease;
         }
+        .rag-answer:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.12);
+        }
+
         .rag-answer pre {
             background: #f8fafc;
             border-radius: 6px;
@@ -170,22 +185,29 @@
         /* RAG Answer Card - Increased width */
         #ragAnswerCard {
             width: 100%;
-            max-width: 64rem; /* Changed from 48rem (max-w-3xl) to 64rem (max-w-4xl) */
+            max-width: 900px;
             margin: 0 auto;
+            position: relative;
+            z-index: 30;
         }
 
         /* Search Results Container - Increased width */
         #searchResults {
             width: 100%;
-            max-width: 64rem; /* Changed from 48rem (max-w-3xl) to 64rem (max-w-4xl) */
+            max-width: 900px;
             margin: 0 auto;
+            position: relative;
+            z-index: 30;
         }
 
         /* Retrieved Documents Header - Match new width */
         #retrievedDocumentsHeader {
             width: 100%;
-            max-width: 64rem; /* Added to match other containers */
-            margin: 0 auto;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 30;
         }
 
         /* Content Container Styles */
@@ -194,6 +216,7 @@
         #retrievedDocumentsHeader {
             position: relative;
             z-index: 30;
+            margin-top: 1rem;  /* Add consistent spacing */
         }
 
         /* Add these new animation styles */
@@ -214,7 +237,14 @@
 
         /* Update the results container styles */
         .results-wrapper {
-            opacity: 0;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;  /* Reduced gap between wrapper elements */
+            position: relative;
+            z-index: 30;
         }
 
         .results-wrapper.visible {
@@ -224,26 +254,26 @@
 
         /* Update the example questions styling */
         .example-question {
-            background: linear-gradient(135deg, #fff 0%, #f3f4f6 100%);
+            background: white;
             transition: all 0.3s ease-in-out;
         }
         .example-question:hover {
-            background: linear-gradient(135deg, #fff 0%, #e0e7ff 100%);
+            background: #f5f3ff; /* indigo-50 */
             transform: translateY(-2px);
         }
 
         /* Chatbot Widget Styles */
         .chat-widget {
             position: fixed;
-            bottom: 20px;
+            bottom: 110px;  /* Increased distance from bottom */
             right: 20px;
             z-index: 1000;
             transition: all 0.3s ease;
         }
 
         .chat-button {
-            width: 60px;
-            height: 60px;
+            width: 70px;  /* Increased from 60px */
+            height: 70px; /* Increased from 60px */
             border-radius: 50%;
             background: #4f46e5;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
@@ -254,17 +284,17 @@
             transition: all 0.3s ease;
         }
 
-        .chat-button:hover {
-            transform: scale(1.1);
-            background: #4338ca;
+        .chat-button svg {
+            width: 32px;  /* Increased from 24px */
+            height: 32px; /* Increased from 24px */
         }
 
         .chat-window {
             position: fixed;
-            bottom: 90px;
+            bottom: 100px;  /* Increased from 90px to accommodate larger button */
             right: 20px;
-            width: 350px;
-            height: 500px;
+            width: 400px;   /* Increased from 350px */
+            height: 600px;  /* Increased from 500px */
             background: white;
             border-radius: 12px;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -274,6 +304,7 @@
             opacity: 0;
             transform: translateY(20px);
             pointer-events: none;
+            padding-bottom: 1rem;  /* Added padding */
         }
 
         .chat-window.active {
@@ -294,7 +325,7 @@
 
         .chat-messages {
             flex: 1;
-            padding: 1rem;
+            padding: 1.5rem;  /* Increased padding */
             overflow-y: auto;
             background: #f9fafb;
         }
@@ -341,6 +372,549 @@
             background: #4f46e5;
             color: white;
             margin-left: auto;
+        }
+
+        /* News Ribbon Styles */
+        .news-ribbon {
+            display: none; /* Hide the ribbon */
+        }
+
+        /* Update main content layout - remove ribbon offset */
+        .main-content {
+            padding-top: 72px; /* Match new header height */
+        }
+
+        /* Update search container - remove ribbon compensation */
+        .search-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            min-height: calc(100vh - var(--header-height));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 2rem;
+        }
+
+        .search-container.has-results {
+            min-height: auto;
+            margin-top: 0;
+            justify-content: flex-start;
+        }
+
+        /* Loading Animation Styles - Updated */
+        .loader {
+            display: none;
+            padding: 2rem;
+            width: 100%;
+            max-width: 900px;
+            margin: 12rem auto 0;  /* Move loader even lower */
+            position: relative;
+            z-index: 30;
+        }
+
+        .loader.active {
+            display: flex;
+            justify-content: center;
+        }
+
+        .loader-content {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        /* Update AI loading styles */
+        .ai-loading {
+            display: none;
+            background: white;
+            border-left: 4px solid #6366f1;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+            width: 100%;
+            max-width: 900px;
+            margin: 12rem auto 0;  /* Match the loader's new margin */
+        }
+
+        .ai-loading.active {
+            display: block;
+        }
+
+        .ai-loading-text {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #4b5563;
+        }
+
+        /* Ensure loader stays hidden when not active */
+        .loader:not(.active) {
+            display: none !important;
+        }
+
+        /* Update search container styles */
+        .search-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            min-height: calc(100vh - var(--header-height));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 2rem;
+        }
+
+        .search-container.has-results {
+            min-height: auto;
+            margin-top: 0;
+            justify-content: flex-start;
+        }
+
+        /* Update example questions styling */
+        #exampleQuestions {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            transition: all 0.3s ease-out;
+            opacity: 1;
+            transition: opacity 0.3s ease-out;
+        }
+
+        /* Add typing indicator styles */
+        .typing-indicator {
+            padding: 0.75rem !important;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .typing-dots span {
+            width: 8px;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 50%;
+            animation: bounce 0.8s infinite;
+        }
+
+        .typing-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .message.sources {
+            font-size: 0.875rem;
+            color: #6b7280;
+            background: #f3f4f6;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+
+        /* Dark mode styles - Updated */
+        .dark body {
+            background-color: #0f172a; /* slate-900 */
+            color: #e2e8f0; /* slate-200 */
+        }
+
+        .dark header {
+            background-color: #1e293b; /* slate-800 */
+            border-bottom: 1px solid #334155; /* slate-700 */
+        }
+
+        .dark footer {
+            background-color: #1e293b; /* slate-800 */
+            border-top: 1px solid #334155; /* slate-700 */
+        }
+
+        /* Text colors */
+        .dark .text-gray-900 {
+            color: #f8fafc; /* slate-50 */
+        }
+
+        .dark .text-gray-700 {
+            color: #e2e8f0; /* slate-200 */
+        }
+
+        .dark .text-gray-600 {
+            color: #cbd5e1; /* slate-300 */
+        }
+
+        .dark .text-gray-500 {
+            color: #94a3b8; /* slate-400 */
+        }
+
+        /* Background colors */
+        .dark .bg-white {
+            background-color: #1e293b; /* slate-800 */
+        }
+
+        .dark .bg-gray-50 {
+            background-color: #0f172a; /* slate-900 */
+        }
+
+        /* Borders */
+        .dark .border-gray-200 {
+            border-color: #334155; /* slate-700 */
+        }
+
+        .dark .border-gray-300 {
+            border-color: #475569; /* slate-600 */
+        }
+
+        /* Search form */
+        .dark .search-form-wrapper {
+            background-color: rgba(30, 41, 59, 0.9);
+            border-color: rgba(51, 65, 85, 0.8);
+        }
+
+        .dark .search-form-wrapper.sticky {
+            background-color: rgba(30, 41, 59, 0.98);
+            border-bottom: 1px solid #334155;
+        }
+
+        .dark input[type="search"] {
+            background-color: #0f172a; /* slate-900 */
+            color: #e2e8f0; /* slate-200 */
+            border-color: #475569; /* slate-600 */
+        }
+
+        .dark input[type="search"]::placeholder {
+            color: #64748b; /* slate-500 */
+        }
+
+        /* Results */
+        .dark .result-item {
+            background-color: #1e293b; /* slate-800 */
+        }
+
+        .dark .result-item:hover {
+            background-color: #334155; /* slate-700 */
+        }
+
+        .dark .content-fade::after {
+            background: linear-gradient(to top, #1e293b, transparent); /* slate-800 to transparent */
+        }
+
+        /* Chat widget */
+        .dark .chat-window {
+            background-color: #1e293b; /* slate-800 */
+            border: 1px solid #334155; /* slate-700 */
+        }
+
+        .dark .chat-messages {
+            background-color: #0f172a; /* slate-900 */
+        }
+
+        .dark .message.bot {
+            background-color: #1e293b; /* slate-800 */
+            border: 1px solid #334155; /* slate-700 */
+        }
+
+        .dark .message.user {
+            background-color: #4f46e5; /* indigo-600 */
+            color: #ffffff;
+        }
+
+        .dark .chat-input {
+            background-color: #0f172a; /* slate-900 */
+            color: #e2e8f0; /* slate-200 */
+            border-color: #475569; /* slate-600 */
+        }
+
+        .dark .chat-input::placeholder {
+            color: #64748b; /* slate-500 */
+        }
+
+        .dark .chat-input-container {
+            border-top: 1px solid #334155; /* slate-700 */
+            background-color: #1e293b; /* slate-800 */
+        }
+
+        /* Example questions */
+        .dark .example-question {
+            background-color: #1e293b; /* slate-800 */
+            border-color: #334155; /* slate-700 */
+        }
+
+        .dark .example-question:hover {
+            background-color: #334155; /* slate-700 */
+            border-color: #475569; /* slate-600 */
+        }
+
+        /* RAG Answer */
+        .dark .rag-answer {
+            background-color: linear-gradient(135deg, #1e293b, #0f172a);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .dark .rag-answer pre {
+            background-color: #0f172a; /* slate-900 */
+        }
+
+        .dark .rag-answer code {
+            background-color: #1f2937; /* gray-800 */
+        }
+
+        /* Profile menu */
+        .dark #profileMenu {
+            background-color: #1e293b; /* slate-800 */
+            border-color: #334155; /* slate-700 */
+        }
+
+        .dark .divide-gray-100 > :not([hidden]) ~ :not([hidden]) {
+            border-color: #334155; /* slate-700 */
+        }
+
+        /* Loading states */
+        .dark .loader-dots {
+            background-color: #1e293b; /* slate-800 */
+        }
+
+        .dark .ai-loading {
+            background-color: #1e293b; /* slate-800 */
+        }
+
+        /* Hover states */
+        .dark .hover\:bg-gray-50:hover {
+            background-color: #334155; /* slate-700 */
+        }
+
+        /* Shadow modifications */
+        .dark .shadow-sm {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark .shadow-md {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Scrollbar customization */
+        .dark ::-webkit-scrollbar-track {
+            background: #0f172a; /* slate-900 */
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background: #475569; /* slate-600 */
+        }
+
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #64748b; /* slate-500 */
+        }
+
+        /* Add these new styles */
+
+        /* Subtle gradient background */
+        body {
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);  /* More pronounced gradient */
+        }
+
+        /* Enhanced header styling */
+        header {
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        /* Improved search container */
+        .search-container {
+            background: radial-gradient(circle at top, rgba(99, 102, 241, 0.03), transparent 70%);
+        }
+
+        /* Enhanced search input */
+        input[type="search"] {
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        input[type="search"]:focus {
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
+            transform: translateY(-1px);
+        }
+
+        /* Animated example questions */
+        .example-question {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .example-question:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 8px 16px rgba(99, 102, 241, 0.12);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        /* Enhanced RAG answer card */
+        .rag-answer {
+            border-left: 4px solid #6366f1;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .rag-answer:hover {
+            box-shadow: 0 8px 16px rgba(99, 102, 241, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Improved result items */
+        .result-item {
+            border-left: 4px solid transparent;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .result-item:hover {
+            border-left-color: #6366f1;
+            transform: translateY(-2px) translateX(2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Enhanced chat widget */
+        .chat-button {
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .chat-button:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .chat-window {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        /* Dark mode enhancements */
+        .dark body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);  /* Enhanced dark mode gradient */
+        }
+
+        .dark header {
+            background: rgba(15, 23, 42, 0.95);
+            border-bottom: 1px solid rgba(51, 65, 85, 0.8);
+        }
+
+        .dark .search-container {
+            background: radial-gradient(circle at top, rgba(99, 102, 241, 0.05), transparent 70%);
+        }
+
+        .dark .example-question {
+            border-color: rgba(51, 65, 85, 0.8);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .dark .example-question:hover {
+            box-shadow: 0 8px 16px rgba(99, 102, 241, 0.2);
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        /* Update the results wrapper styles */
+        .results-wrapper {
+            width: 100%;
+            max-width: 1200px;  /* Increased from 900px */
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;  /* Reduced gap between wrapper elements */
+            position: relative;
+            z-index: 30;
+        }
+
+        /* Update the RAG answer card width */
+        .rag-answer {
+            width: 100%;
+            max-width: 1200px;  /* Increased from default */
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Update search container width */
+        .search-container {
+            max-width: 1200px;  /* Increased from default */
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Ensure the search form remains centered but not too wide */
+        .search-form-wrapper {
+            max-width: 800px;  /* Keep search input narrower for better usability */
+            margin: 0 auto;
+        }
+
+        /* Update media queries for responsive design */
+        @media (max-width: 1280px) {
+            .results-wrapper,
+            .rag-answer,
+            .search-container {
+                max-width: 90%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .search-container,
+            .rag-answer,
+            .result-item {
+                padding: 1.5rem;
+            }
+        }
+        
+        /* Update the separator styling */
+        #retrievedDocumentsHeader {
+            display: none;  /* Hidden by default */
+            margin: 0.5rem 0;  /* Further reduced margin */
+            padding: 2rem 0;
+        }
+
+        .separator-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #4b5563;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .separator-content::before,
+        .separator-content::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #d1d5db, transparent);
+        }
+
+        /* Content Container - New */
+        .content-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;  /* Reduced gap between container elements */
+        }
+
+        .search-container.has-results #exampleQuestions {
+            display: none;
+            opacity: 0;
         }
     </style>
 </head>
@@ -400,15 +974,17 @@
                             <!-- Profiles Section -->
                             <div class="py-2">
                                 <p class="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                                    Switch Profile
+                                    India Region
                                 </p>
                                 <button 
                                     type="button"
                                     data-group-id="all_employees"
                                     data-user-name="Priya Sharma"
                                     data-user-email="priya.sharma@contoso.com"
-                                    data-user-id="EMP001"
+                                    data-user-id="IND001"
+                                    data-region="india"
                                     data-user-initials="PS"
+                                    data-access-level="public"
                                     class="w-full flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 group bg-gray-50"
                                     onclick="switchProfile(this)"
                                 >
@@ -423,14 +999,15 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                     </svg>
                                 </button>
-                                <!-- Repeat for other profiles with correct initials and group_id -->
                                 <button 
                                     type="button"
                                     data-group-id="management"
                                     data-user-name="Rajesh Patel"
                                     data-user-email="rajesh.patel@contoso.com"
-                                    data-user-id="MGT001"
+                                    data-user-id="IND002"
+                                    data-region="india"
                                     data-user-initials="RP"
+                                    data-access-level="classified"
                                     class="w-full flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 group"
                                     onclick="switchProfile(this)"
                                 >
@@ -445,36 +1022,210 @@
                                 <button 
                                     type="button"
                                     data-group-id="hr_group"
-                                    data-user-name="Anjali Desai"
-                                    data-user-email="anjali.desai@contoso.com"
-                                    data-user-id="HR002"
-                                    data-user-initials="AD"
+                                    data-user-name="Ananya Kumar"
+                                    data-user-email="ananya.kumar@contoso.com"
+                                    data-user-id="IND003",
+                                    data-region="india",
+                                    data-user-initials="AK",
+                                    data-access-level="restricted",
                                     class="w-full flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 group"
                                     onclick="switchProfile(this)"
                                 >
                                     <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
-                                        <span class="text-sm font-medium text-indigo-700">AD</span>
+                                        <span class="text-sm font-medium text-indigo-700">AK</span>
                                     </div>
                                     <div class="text-left">
-                                        <p class="font-medium group-hover:text-gray-900">Anjali Desai</p>
+                                        <p class="font-medium group-hover:text-gray-900">Ananya Kumar</p>
                                         <p class="text-xs text-gray-500">hr_group</p>
                                     </div>
                                 </button>
                                 <button 
                                     type="button"
                                     data-group-id="finance_group"
-                                    data-user-name="Arjun Mehta"
-                                    data-user-email="arjun.mehta@contoso.com"
-                                    data-user-id="FIN003"
-                                    data-user-initials="AM"
+                                    data-user-name="Vikram Malhotra"
+                                    data-user-email="vikram.malhotra@contoso.com"
+                                    data-user-id="IND004",
+                                    data-region="india",
+                                    data-user-initials="VM",
+                                    data-access-level="confidential",
                                     class="w-full flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 group"
                                     onclick="switchProfile(this)"
                                 >
                                     <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
-                                        <span class="text-sm font-medium text-indigo-700">AM</span>
+                                        <span class="text-sm font-medium text-indigo-700">VM</span>
                                     </div>
                                     <div class="text-left">
-                                        <p class="font-medium group-hover:text-gray-900">Arjun Mehta</p>
+                                        <p class="font-medium group-hover:text-gray-900">Vikram Malhotra</p>
+                                        <p class="text-xs text-gray-500">finance_group</p>
+                                    </div>
+                                </button>
+
+                                <!-- UK Region Header -->
+                                <p class="px-4 py-2 mt-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                                    UK Region
+                                </p>
+                                <button 
+                                    type="button"
+                                    data-group-id="all_employees"
+                                    data-user-name="Emma Thompson"
+                                    data-user-email="emma.thompson@contoso.co.uk"
+                                    data-user-id="UK001",
+                                    data-region="uk",
+                                    data-user-initials="ET",
+                                    data-access-level="public",
+                                    class="w-full flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 group"
+                                    onclick="switchProfile(this)"
+                                >
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <span class="text-sm font-medium text-indigo-700">ET</span>
+                                    </div>
+                                    <div class="text-left">
+                                        <p class="font-medium group-hover:text-gray-900">Emma Thompson</p>
+                                        <p class="text-xs text-gray-500">all_employees</p>
+                                    </div>
+                                </button>
+                                <button 
+                                    type="button"
+                                    data-group-id="management"
+                                    data-user-name="William Parker"
+                                    data-user-email="william.parker@contoso.co.uk"
+                                    data-user-id="UK002",
+                                    data-region="uk",
+                                    data-user-initials="WP",
+                                    data-access-level="classified",
+                                    class="w-full flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 group"
+                                    onclick="switchProfile(this)"
+                                >
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <span class="text-sm font-medium text-indigo-700">WP</span>
+                                    </div>
+                                    <div class="text-left">
+                                        <p class="font-medium group-hover:text-gray-900">William Parker</p>
+                                        <p class="text-xs text-gray-500">management</p>
+                                    </div>
+                                </button>
+                                <button 
+                                    type="button"
+                                    data-group-id="hr_group"
+                                    data-user-name="James Wilson"
+                                    data-user-email="james.wilson@contoso.co.uk"
+                                    data-user-id="UK003",
+                                    data-region="uk",
+                                    data-user-initials="JW",
+                                    data-access-level="restricted",
+                                    class="w-full flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 group"
+                                    onclick="switchProfile(this)"
+                                >
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <span class="text-sm font-medium text-indigo-700">JW</span>
+                                    </div>
+                                    <div class="text-left">
+                                        <p class="font-medium group-hover:text-gray-900">James Wilson</p>
+                                        <p class="text-xs text-gray-500">hr_group</p>
+                                    </div>
+                                </button>
+                                <button 
+                                    type="button"
+                                    data-group-id="finance_group"
+                                    data-user-name="Sophie Clarke"
+                                    data-user-email="sophie.clarke@contoso.co.uk"
+                                    data-user-id="UK004",
+                                    data-region="uk",
+                                    data-user-initials="SC",
+                                    data-access-level="confidential",
+                                    class="w-full flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 group"
+                                    onclick="switchProfile(this)"
+                                >
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <span class="text-sm font-medium text-indigo-700">SC</span>
+                                    </div>
+                                    <div class="text-left">
+                                        <p class="font-medium group-hover:text-gray-900">Sophie Clarke</p>
+                                        <p class="text-xs text-gray-500">finance_group</p>
+                                    </div>
+                                </button>
+
+                                <!-- US Region Header -->
+                                <p class="px-4 py-2 mt-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                                    US Region
+                                </p>
+                                <button 
+                                    type="button"
+                                    data-group-id="all_employees"
+                                    data-user-name="Sarah Johnson"
+                                    data-user-email="sarah.johnson@contoso.com"
+                                    data-user-id="US001",
+                                    data-region="us",
+                                    data-user-initials="SJ",
+                                    data-access-level="public",
+                                    class="w-full flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 group"
+                                    onclick="switchProfile(this)"
+                                >
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <span class="text-sm font-medium text-indigo-700">SJ</span>
+                                    </div>
+                                    <div class="text-left">
+                                        <p class="font-medium group-hover:text-gray-900">Sarah Johnson</p>
+                                        <p class="text-xs text-gray-500">all_employees</p>
+                                    </div>
+                                </button>
+                                <button 
+                                    type="button"
+                                    data-group-id="management"
+                                    data-user-name="David Miller"
+                                    data-user-email="david.miller@contoso.com"
+                                    data-user-id="US002",
+                                    data-region="us",
+                                    data-user-initials="DM",
+                                    data-access-level="classified",
+                                    class="w-full flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 group"
+                                    onclick="switchProfile(this)"
+                                >
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <span class="text-sm font-medium text-indigo-700">DM</span>
+                                    </div>
+                                    <div class="text-left">
+                                        <p class="font-medium group-hover:text-gray-900">David Miller</p>
+                                        <p class="text-xs text-gray-500">management</p>
+                                    </div>
+                                </button>
+                                <button 
+                                    type="button"
+                                    data-group-id="hr_group"
+                                    data-user-name="Jennifer Adams"
+                                    data-user-email="jennifer.adams@contoso.com"
+                                    data-user-id="US003",
+                                    data-region="us",
+                                    data-user-initials="JA",
+                                    data-access-level="restricted",
+                                    class="w-full flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 group"
+                                    onclick="switchProfile(this)"
+                                >
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <span class="text-sm font-medium text-indigo-700">JA</span>
+                                    </div>
+                                    <div class="text-left">
+                                        <p class="font-medium group-hover:text-gray-900">Jennifer Adams</p>
+                                        <p class="text-xs text-gray-500">hr_group</p>
+                                    </div>
+                                </button>
+                                <button 
+                                    type="button"
+                                    data-group-id="finance_group"
+                                    data-user-name="Michael Brown"
+                                    data-user-email="michael.brown@contoso.com"
+                                    data-user-id="US004",
+                                    data-region="us",
+                                    data-user-initials="MB",
+                                    data-access-level="confidential",
+                                    class="w-full flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 group"
+                                    onclick="switchProfile(this)"
+                                >
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                        <span class="text-sm font-medium text-indigo-700">MB</span>
+                                    </div>
+                                    <div class="text-left">
+                                        <p class="font-medium group-hover:text-gray-900">Michael Brown</p>
                                         <p class="text-xs text-gray-500">finance_group</p>
                                     </div>
                                 </button>
@@ -502,165 +1253,150 @@
     <main class="main-content">
         <!-- Search Section -->
         <div id="searchContainer" class="search-container">
-            <div class="container mx-auto px-4 pt-20">
-                <!-- Search Box -->
-                <div class="max-w-2xl mx-auto">
-                    <form id="searchForm" class="relative" autocomplete="off">
-                        <div class="relative flex">
-                            <input 
-                                type="search" 
-                                id="searchQuery"
-                                name="searchQuery"
-                                class="w-full pl-12 pr-4 py-3 text-lg border border-gray-300 rounded-l-xl shadow-sm
-                                       placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                                placeholder="Search documents..."
-                                autocomplete="off"
-                            >
-                            <div class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                </svg>
-                            </div>
-                            <button 
-                                type="submit"
-                                class="px-6 bg-indigo-600 hover:bg-indigo-700 text-white rounded-r-xl flex items-center justify-center transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                            >
-                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                </svg>
-                                <span class="ml-2">Search</span>
-                            </button>
-                        </div>
-
-                        <!-- Search Options -->
-                        <div class="mt-3 flex items-center justify-between text-sm text-gray-600">
-                            <div class="flex items-center space-x-4">
-                                <label class="flex items-center space-x-2">
-                                    <input type="checkbox" id="fullText" class="rounded text-blue-600 focus:ring-blue-500">
-                                    <span>Full text search</span>
-                                </label>
-                                <label class="flex items-center space-x-2">
-                                    <input type="checkbox" id="exactMatch" class="rounded text-blue-600 focus:ring-blue-500">
-                                    <span>Exact match</span>
-                                </label>
-                            </div>
-                            <button
-                                type="button"
-                                id="advancedSearch"
-                                class="text-blue-600 hover:text-blue-700 focus:outline-none"
-                            >
-                                Advanced filters
-                            </button>
-                        </div>
-                    </form>
-
-                    <!-- Search Tips -->
-                    <div class="mt-4 text-center text-sm text-gray-500">
-                        <p>Discover insights across your organization's knowledge base</p>
-                        <p class="mt-2">
-                            Press <kbd class="px-2 py-1 bg-gray-100 rounded">/</kbd> to search | 
-                            Use <kbd class="px-2 py-1 bg-gray-100 rounded">↑</kbd> 
-                            <kbd class="px-2 py-1 bg-gray-100 rounded">↓</kbd> to navigate
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Update the example questions section -->
-                <div id="exampleQuestions" class="max-w-2xl mx-auto mt-8">
-                    <p class="text-sm text-gray-500 mb-3">Try asking about:</p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <button 
-                            class="example-question aspect-square p-6 text-sm bg-white hover:bg-indigo-50 text-gray-600 hover:text-indigo-700 
-                                   rounded-xl border border-gray-200 hover:border-indigo-200 transition-colors duration-200
-                                   flex items-center justify-center text-center shadow-sm hover:shadow-md"
-                            data-query="What is Contoso's employee bands and salary structure?"
-                        >
-                            What is Contoso's employee bands and salary structure?
-                        </button>
-                        <button 
-                            class="example-question aspect-square p-6 text-sm bg-white hover:bg-indigo-50 text-gray-600 hover:text-indigo-700 
-                                   rounded-xl border border-gray-200 hover:border-indigo-200 transition-colors duration-200
-                                   flex items-center justify-center text-center shadow-sm hover:shadow-md"
-                            data-query="How do I request time off, and how many days can I take?"
-                        >
-                            How do I request time off, and how many days can I take?
-                        </button>
-                        <button 
-                            class="example-question aspect-square p-6 text-sm bg-white hover:bg-indigo-50 text-gray-600 hover:text-indigo-700 
-                                   rounded-xl border border-gray-200 hover:border-indigo-200 transition-colors duration-200
-                                   flex items-center justify-center text-center shadow-sm hover:shadow-md"
-                            data-query="What are our security guidelines for employee data?"
-                        >
-                            What are our security guidelines for employee data?
-                        </button>
-                        <button 
-                            class="example-question aspect-square p-6 text-sm bg-white hover:bg-indigo-50 text-gray-600 hover:text-indigo-700 
-                                   rounded-xl border border-gray-200 hover:border-indigo-200 transition-colors duration-200
-                                   flex items-center justify-center text-center shadow-sm hover:shadow-md"
-                            data-query="Explain our Employee Promotion Process."
-                        >
-                            Explain our Employee Promotion Process.
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Loading Indicator -->
-                <div id="loadingIndicator" class="hidden mt-8">
-                    <div class="flex justify-center items-center space-x-3">
-                        <div class="loader"></div>
-                        <span class="text-gray-600">Searching documents...</span>
-                    </div>
-                </div>
-
-                <!-- Update the results containers structure -->
-                <div id="resultsWrapper" class="results-wrapper w-full max-w-4xl mx-auto mt-8 mb-16 space-y-8">
-                    <!-- RAG Answer Card -->
-                    <div id="ragAnswerCard" class="fade-slide-in hidden">
-                        <div class="rag-answer bg-white rounded-xl shadow-sm p-6 w-full">
-                            <!-- Answer Header -->
-                            <div class="flex items-center justify-between mb-4">
-                                <div class="flex items-center">
-                                    <svg class="h-6 w-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="search-form-wrapper">
+                <div class="container mx-auto px-4">
+                    <!-- Search Box -->
+                    <div class="max-w-2xl mx-auto">
+                        <form id="searchForm" class="relative" autocomplete="off">
+                            <div class="relative flex">
+                                <input 
+                                    type="search" 
+                                    id="searchQuery"
+                                    name="searchQuery"
+                                    class="w-full pl-12 pr-4 py-3 text-lg border border-gray-300 rounded-l-xl shadow-sm
+                                           placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    placeholder="Search documents..."
+                                    autocomplete="off"
+                                >
+                                <div class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
+                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                                            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                     </svg>
-                                    <h3 class="text-lg font-semibold text-gray-900">AI Summary</h3>
                                 </div>
-                                <div class="flex items-center space-x-3">
-                                    <span id="tokenCount" class="text-sm text-gray-500"></span>
-                                    <button 
-                                        onclick="regenerateAnswer()"
-                                        class="text-blue-600 hover:text-blue-700 focus:outline-none p-1 hover:bg-blue-50 rounded-full"
-                                        title="Regenerate answer"
-                                    >
-                                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                                        </svg>
-                                    </button>
-                                </div>
+                                <button 
+                                    type="submit"
+                                    class="px-6 bg-indigo-600 hover:bg-indigo-700 text-white rounded-r-xl flex items-center justify-center transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                >
+                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                    </svg>
+                                    <span class="ml-2">Search</span>
+                                </button>
                             </div>
 
-                            <!-- Answer Content -->
-                            <div id="ragAnswer" class="prose prose-blue max-w-none"></div>
+                            <!-- Search Options -->
+                            <div class="mt-3 flex items-center justify-between text-sm text-gray-600" id="searchOptions">
+                                <div class="flex items-center space-x-4">
+                                    <label class="flex items-center space-x-2">
+                                        <input type="checkbox" id="fullText" class="rounded text-blue-600 focus:ring-blue-500">
+                                        <span>Full text search</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2">
+                                        <input type="checkbox" id="exactMatch" class="rounded text-blue-600 focus:ring-blue-500">
+                                        <span>Exact match</span>
+                                    </label>
+                                </div>
+                                <button
+                                    type="button"
+                                    id="advancedSearch"
+                                    class="text-blue-600 hover:text-blue-700 focus:outline-none"
+                                >
+                                    Advanced filters
+                                </button>
+                            </div>
+                        </form>
+
+                        <!-- Search Tips -->
+                        <div class="mt-4 text-center text-sm text-gray-500" id="searchTips">
+                            <p>Discover insights across your organization's knowledge base</p>
+                            <p class="mt-2">
+                                Press <kbd class="px-2 py-1 bg-gray-100 rounded">/</kbd> to search | 
+                                Use <kbd class="px-2 py-1 bg-gray-100 rounded">↑</kbd> 
+                                <kbd class="px-2 py-1 bg-gray-100 rounded">↓</kbd> to navigate
+                            </p>
                         </div>
                     </div>
 
-                    <!-- Retrieved Documents Section Header -->
-                    <div id="retrievedDocumentsHeader" class="fade-slide-in hidden">
-                        <div class="flex items-center">
-                            <div class="flex-grow border-t border-gray-200"></div>
-                            <h2 class="mx-4 text-lg font-semibold text-gray-700">Retrieved Documents</h2>
-                            <div class="flex-grow border-t border-gray-200"></div>
+                    <!-- Example Questions -->
+                    <div id="exampleQuestions" class="max-w-2xl mx-auto mt-8">
+                        <p class="text-sm text-gray-500 mb-3">Try asking about:</p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <button 
+                                class="example-question aspect-square p-6 text-sm bg-white hover:bg-indigo-50 text-gray-600 hover:text-indigo-700 
+                                       rounded-xl border border-gray-200 hover:border-indigo-200 transition-colors duration-200
+                                       flex items-center justify-center text-center shadow-sm hover:shadow-md"
+                                data-query="What is Contoso's employee bands and salary structure?"
+                            >
+                                What is Contoso's employee bands and salary structure?
+                            </button>
+                            <button 
+                                class="example-question aspect-square p-6 text-sm bg-white hover:bg-indigo-50 text-gray-600 hover:text-indigo-700 
+                                       rounded-xl border border-gray-200 hover:border-indigo-200 transition-colors duration-200
+                                       flex items-center justify-center text-center shadow-sm hover:shadow-md"
+                                data-query="How do I request time off, and how many days can I take?"
+                            >
+                                How do I request time off, and how many days can I take?
+                            </button>
+                            <button 
+                                class="example-question aspect-square p-6 text-sm bg-white hover:bg-indigo-50 text-gray-600 hover:text-indigo-700 
+                                       rounded-xl border border-gray-200 hover:border-indigo-200 transition-colors duration-200
+                                       flex items-center justify-center text-center shadow-sm hover:shadow-md"
+                                data-query="What are our security guidelines for employee data?"
+                            >
+                                What are our security guidelines for employee data?
+                            </button>
+                            <button 
+                                class="example-question aspect-square p-6 text-sm bg-white hover:bg-indigo-50 text-gray-600 hover:text-indigo-700 
+                                       rounded-xl border border-gray-200 hover:border-indigo-200 transition-colors duration-200
+                                       flex items-center justify-center text-center shadow-sm hover:shadow-md"
+                                data-query="Explain our Employee Promotion Process."
+                            >
+                                Explain our Employee Promotion Process.
+                            </button>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <!-- Search Results Container -->
-                    <div id="searchResults" class="fade-slide-in space-y-6">
-                        <!-- Search results will be dynamically inserted here -->
+            <!-- Replace the existing loader components with this simplified version -->
+            <div class="loader" id="searchLoader">
+                <div class="loader-content">
+                    <svg class="animate-spin h-5 w-5 text-indigo-600 mr-3" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span class="text-gray-700" id="loaderText">Searching documents...</span>
+                </div>
+            </div>
+
+            <!-- Update the vector search loader -->
+            <div class="ai-loading" id="vectorSearchLoader">
+                <div class="ai-loading-text">
+                    <svg class="animate-spin h-5 w-5 text-indigo-600" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span id="vectorSearchText">Generating AI response...</span>
+                </div>
+            </div>
+
+            <!-- Content Container -->
+            <div class="content-container">
+                <!-- RAG Answer Card -->
+                <div id="ragAnswerCard" class="hidden w-full max-w-900px mx-auto relative z-30"></div>
+                
+                <!-- Retrieved Documents Header -->
+                <div id="retrievedDocumentsHeader" class="hidden">
+                    <div class="separator-content">
+                        Retrieved Documents ({{ results_count }})
                     </div>
+                </div>
+                
+                <!-- Search Results -->
+                <div id="searchResults">
+                    <!-- Results content -->
                 </div>
             </div>
         </div>
@@ -794,7 +1530,7 @@
                 </div>
                 <button class="text-white hover:text-gray-200" id="chatClose">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
             </div>
@@ -820,8 +1556,19 @@
 
     <script>
         // Core Elements: Centralize DOM element references
-        const elements = {};
-        
+        const elements = {
+            searchQuery: document.getElementById('searchQuery'),
+            searchResults: document.getElementById('searchResults'),
+            ragAnswerCard: document.getElementById('ragAnswerCard'),
+            ragAnswer: document.getElementById('ragAnswer'),
+            uploadModal: document.getElementById('uploadModal'),
+            toggleUpload: document.getElementById('toggleUpload'),
+            closeUpload: document.getElementById('closeUpload'),
+            uploadForm: document.getElementById('uploadForm'),
+            profileDropdown: document.getElementById('profileDropdown'),
+            profileMenu: document.getElementById('profileMenu')
+        };
+
         // Application State Management
         const state = {
             hasSearched: false,
@@ -836,7 +1583,6 @@
             elements.searchForm = document.getElementById('searchForm');
             elements.searchQuery = document.getElementById('searchQuery');
             elements.searchResults = document.getElementById('searchResults');
-            elements.loadingIndicator = document.getElementById('loadingIndicator');
             elements.searchContainer = document.getElementById('searchContainer');
             elements.uploadModal = document.getElementById('uploadModal');
             elements.toggleUpload = document.getElementById('toggleUpload');
@@ -874,104 +1620,58 @@
 
         // Handle Search
         async function handleSearch() {
-            if (!elements.searchQuery) {
-                showError('Search functionality is not available');
-                return;
-            }
+            const searchLoader = document.getElementById('searchLoader');
+            const vectorSearchLoader = document.getElementById('vectorSearchLoader');
+            const searchOptions = document.getElementById('searchOptions');
+            const searchTips = document.getElementById('searchTips');
+            const exampleQuestions = document.getElementById('exampleQuestions');
             
+            if (!elements.searchQuery) return;
+
             const query = elements.searchQuery.value.trim();
-            if (!query) {
-                showError('Please enter a search query');
-                return;
-            }
+            if (!query) return;
 
-            // Show loading state
-            if (elements.loadingIndicator) {
-                elements.loadingIndicator.classList.remove('hidden');
-            }
-            
             try {
-                // Get current active profile's group ID
-                const activeProfile = document.querySelector('[data-group-id].bg-gray-50');
-                const groupId = activeProfile ? activeProfile.dataset.groupId : 'all_employees';
+                // Hide search options, tips, and example questions
+                searchOptions?.classList.add('hidden');
+                searchTips?.classList.add('hidden');
+                exampleQuestions?.classList.add('hidden');
 
-                // Create the search request payload
-                const searchPayload = {
-                    search_query: query,
-                    group_id: groupId,
-                    search_options: {
-                        full_text: document.getElementById('fullText')?.checked || false,
-                        exact_match: document.getElementById('exactMatch')?.checked || false
-                    }
-                };
-
-                console.log('Search payload:', searchPayload); // Debug log
-
-                // Perform search request
-                const searchResponse = await fetch('/search', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(searchPayload)
-                });
-
-                // Parse response first to get error message if any
-                const responseData = await searchResponse.json();
-
-                if (!searchResponse.ok) {
-                    throw new Error(responseData.error || responseData.message || 'Search request failed');
-                }
-
-                state.currentResults = responseData;
-
-                // Update UI state
-                if (!state.hasSearched) {
-                    elements.searchContainer.classList.add('fixed', 'top-16');
-                    state.hasSearched = true;
-                }
-
-                // Hide example questions if they're showing
-                const exampleQuestions = document.getElementById('exampleQuestions');
-                if (exampleQuestions) {
-                    exampleQuestions.style.display = 'none';
-                }
-
+                // Show initial search loader
+                searchLoader?.classList.add('active');
+                
+                // Get search results
+                const results = await performSearch(query);
+                
                 // Display results
-                displayResults(state.currentResults);
+                displayResults(results);
+                
+                // Hide search loader and show AI generation loader
+                searchLoader?.classList.remove('active');
+                vectorSearchLoader?.classList.add('active');
                 
                 // Generate RAG answer if we have results
-                if (state.currentResults.length > 0) {
-                    await generateRagAnswer(query, state.currentResults);
+                if (results.length > 0) {
+                    await generateRagAnswer(query, results);
                 } else {
                     elements.ragAnswerCard?.classList.add('hidden');
-                    showInfo('No results found for your query');
                 }
 
-                showSuccess('Search completed successfully');
-                
             } catch (error) {
-                console.error('Search error:', error); // Debug log
+                console.error('Search error:', error);
                 showError(error.message || 'An error occurred while searching');
-                
-                // Clear results and hide RAG answer on error
-                if (elements.searchResults) {
-                    elements.searchResults.innerHTML = '';
-                }
-                elements.ragAnswerCard?.classList.add('hidden');
             } finally {
-                if (elements.loadingIndicator) {
-                    elements.loadingIndicator.classList.add('hidden');
-                }
+                // Hide all loaders
+                searchLoader?.classList.remove('active');
+                vectorSearchLoader?.classList.remove('active');
             }
         }
 
-        // Separate RAG answer generation
-        async function generateRagAnswer(query, results) {
+        // Generate RAG Answer function - Updated
+        async function generateRagAnswer(query, searchResults) {
             try {
-                const context = results.map(r => r.content).join('\n\n');
-                const ragResponse = await fetch('/generate_answer', {
+                const context = searchResults.map(r => r.content).join('\n\n');
+                const response = await fetch('/generate_answer', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -980,35 +1680,147 @@
                     body: JSON.stringify({
                         query: query,
                         context: context,
-                        sources: results.map(r => ({
+                        sources: searchResults.map(r => ({
                             title: r.title,
                             score: r.score
                         }))
                     })
                 });
 
-                if (!ragResponse.ok) {
-                    throw new Error('Failed to generate AI answer');
+                if (!response.ok) {
+                    throw new Error('Failed to generate answer');
                 }
 
-                const ragResult = await ragResponse.json();
-                displayRagAnswer(ragResult);
+                const ragResult = await response.json();
+                
+                // Make sure ragAnswerCard exists and is visible
+                if (elements.ragAnswerCard) {
+                    elements.ragAnswerCard.classList.remove('hidden');
+                    displayRagAnswer(ragResult);
+                } else {
+                    console.error('RAG answer card element not found');
+                }
+
             } catch (error) {
-                showError('Failed to generate AI answer');
-                console.error('RAG error:', error);
+                console.error('RAG generation error:', error);
+                showError('Failed to generate AI response');
+                elements.ragAnswerCard?.classList.add('hidden');
+            } finally {
+                // Hide loading state if it exists
+                document.getElementById('aiLoading')?.classList.remove('active');
             }
+        }
+
+        // Display RAG Answer function - Updated
+        function displayRagAnswer(ragResult) {
+            if (!elements.ragAnswerCard) {
+                console.error('RAG answer card element not found');
+                return;
+            }
+
+            elements.ragAnswerCard.classList.remove('hidden');
+            elements.ragAnswerCard.style.animationDelay = '0s';
+
+            // Enhanced AI Summary Card design
+            elements.ragAnswerCard.innerHTML = `
+                <div class="bg-gradient-to-br from-indigo-50 to-white rounded-xl shadow-lg border border-indigo-100 p-6">
+                    <!-- Header -->
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                        d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900">AI Summary</h3>
+                                <p class="text-sm text-gray-500" id="tokenCount">${ragResult.token_count || 0} tokens used</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button onclick="regenerateAnswer()" class="p-2 hover:bg-indigo-50 rounded-full transition-colors">
+                                <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                </svg>
+                            </button>
+                            <button onclick="copyToClipboard()" class="p-2 hover:bg-indigo-50 rounded-full transition-colors">
+                                <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                        d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="prose prose-indigo max-w-none">
+                        ${marked.parse(ragResult.answer || '')}
+                    </div>
+
+                    <!-- Sources -->
+                    <div class="mt-6 pt-6 border-t border-indigo-100">
+                        <h4 class="text-sm font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                            <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                            </svg>
+                            Sources Used
+                        </h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            ${(ragResult.sources || []).map((source, index) => `
+                                <div class="bg-white rounded-lg p-4 border border-gray-100 hover:border-indigo-200 transition-colors">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm font-medium text-gray-900">${source.title || 'Untitled'}.txt</span>
+                                        <span class="text-xs font-medium text-indigo-600 bg-indigo-50 px-2 py-1 rounded-full">
+                                            ${Math.round((source.score || 0) * 100)}% match
+                                        </span>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Add fade-slide-in animation class
+            elements.ragAnswerCard.classList.add('fade-slide-in');
         }
 
         // Update the displayResults function
         function displayResults(results) {
             if (!elements.searchResults) return;
 
-            const resultsWrapper = document.getElementById('resultsWrapper');
-            resultsWrapper.classList.remove('visible');
-
             // Clear previous results
             elements.searchResults.innerHTML = '';
             
+            // Move content into container
+            let contentContainer = document.querySelector('.content-container');
+            if (!contentContainer) {
+                contentContainer = document.createElement('div');
+                contentContainer.className = 'content-container';
+                elements.searchResults.parentNode.insertBefore(contentContainer, elements.searchResults);
+            }
+            
+            contentContainer.appendChild(elements.ragAnswerCard);
+            contentContainer.appendChild(document.getElementById('retrievedDocumentsHeader'));
+            contentContainer.appendChild(elements.searchResults);
+            
+            // Show/hide the divider based on results
+            const retrievedDocumentsHeader = document.getElementById('retrievedDocumentsHeader');
+            if (retrievedDocumentsHeader) {
+                if (results.length > 0) {
+                    retrievedDocumentsHeader.style.display = 'block';
+                    retrievedDocumentsHeader.classList.remove('hidden');
+                    retrievedDocumentsHeader.querySelector('.separator-content').textContent = 
+                        `Retrieved Documents (${results.length})`;
+                } else {
+                    retrievedDocumentsHeader.style.display = 'none';
+                    retrievedDocumentsHeader.classList.add('hidden');
+                }
+            }
+
             if (results.length === 0) {
                 elements.searchResults.innerHTML = `
                     <div class="text-center py-8 text-gray-500 fade-slide-in">
@@ -1018,47 +1830,140 @@
                 return;
             }
 
-            const header = document.getElementById('retrievedDocumentsHeader');
-            if (header) {
-                header.classList.remove('hidden');
+            // Show separator when we have results
+            if (contentContainer.querySelector('#retrievedDocumentsHeader')) {
+                contentContainer.querySelector('#retrievedDocumentsHeader').classList.remove('hidden');
             }
 
             results.forEach((result, index) => {
                 const resultElement = document.createElement('div');
-                resultElement.className = 'result-item bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-all duration-300 fade-slide-in';
+                resultElement.className = 'result-item bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-lg border border-gray-100 hover:border-indigo-200 transition-all duration-300 fade-slide-in';
                 resultElement.style.animationDelay = `${index * 0.1}s`;
                 
-                // Calculate score color based on score value
+                // Calculate confidence level
                 const score = Math.round(result.score * 100);
-                const scoreClass = score >= 90 ? 'bg-emerald-100 text-emerald-800' :
-                                  score >= 70 ? 'bg-emerald-100 text-emerald-800' :
-                                  score >= 50 ? 'bg-emerald-100 text-emerald-800' : 
-                                  'bg-emerald-100 text-emerald-800';
+                const confidenceLevel = score >= 90 ? 'Very High' :
+                                       score >= 70 ? 'High' :
+                                       score >= 50 ? 'Medium' : 'Low';
+                const confidenceColor = score >= 90 ? 'emerald' :
+                                       score >= 70 ? 'green' :
+                                       score >= 50 ? 'yellow' : 'red';
+
+                // Format date
+                const lastUpdate = new Date(result.last_update);
+                const formattedDate = lastUpdate.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                });
+                const formattedTime = lastUpdate.toLocaleTimeString('en-US', {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
                 
-                resultElement.innerHTML = `
-                    <div class="flex justify-between items-start mb-3">
-                        <h3 class="text-lg font-semibold text-gray-900">${result.title}</h3>
-                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${scoreClass}">
-                            ${score}% Match
-                        </span>
-                    </div>
-                    <p class="text-gray-600 mb-4">${result.content}</p>
-                    <div class="flex items-center text-sm text-gray-500">
-                        <span class="flex items-center">
-                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                            </svg>
-                            ${result.source || 'Unknown'}
-                        </span>
+                const content = `
+                    <div class="p-6 space-y-6">
+                        <!-- Header Section -->
+                        <div class="flex justify-between items-start gap-4">
+                            <div class="flex-1">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <div class="w-8 h-8 rounded-lg bg-indigo-100 flex items-center justify-center">
+                                        <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-lg font-semibold text-gray-900">${result.title}.txt</h3>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-end gap-2">
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-${confidenceColor}-100 text-${confidenceColor}-800">
+                                    ${score}% - ${confidenceLevel} Confidence
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Content Section -->
+                        <div class="content-fade bg-white rounded-lg p-5 border border-gray-100">
+                            <p class="text-gray-600 leading-relaxed">${result.content}</p>
+                        </div>
+
+                        <!-- Metadata Section -->
+                        <div class="flex items-center gap-4 text-sm text-gray-600 border-t border-gray-100 pt-4 mt-4">
+                            <!-- Access Level -->
+                            <div class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                </svg>
+                                <span class="whitespace-nowrap">
+                                    <span class="text-gray-500">Access:</span>
+                                    <span class="font-medium text-gray-900 ml-1">${result.access_level}</span>
+                                </span>
+                            </div>
+
+                            <!-- Separator -->
+                            <div class="h-4 w-px bg-gray-200"></div>
+
+                            <!-- Region -->
+                            <div class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                        d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" />
+                                </svg>
+                                <span class="whitespace-nowrap">
+                                    <span class="text-gray-500">Region:</span>
+                                    <span class="font-medium text-gray-900 ml-1">${result.regions.join(', ')}</span>
+                                </span>
+                            </div>
+
+                            <!-- Separator -->
+                            <div class="h-4 w-px bg-gray-200"></div>
+
+                            <!-- Groups -->
+                            <div class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                                <span class="whitespace-nowrap">
+                                    <span class="text-gray-500">Groups:</span>
+                                    <span class="font-medium text-gray-900 ml-1">${result.group_ids.join(', ')}</span>
+                                </span>
+                            </div>
+
+                            <!-- Separator -->
+                            <div class="h-4 w-px bg-gray-200"></div>
+
+                            <!-- Last Update -->
+                            <div class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span class="whitespace-nowrap">
+                                    <span class="text-gray-500">Updated:</span>
+                                    <span class="font-medium text-gray-900 ml-1">${formattedDate} ${formattedTime}</span>
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 `;
+                
+                resultElement.innerHTML = content;
+
+                // Add click handler to toggle content expansion
+                const contentFade = resultElement.querySelector('.content-fade');
+                contentFade.addEventListener('click', () => {
+                    contentFade.classList.toggle('expanded');
+                });
+
                 elements.searchResults.appendChild(resultElement);
             });
 
             // Show results with animation
             setTimeout(() => {
-                resultsWrapper.classList.add('visible');
+                contentContainer.classList.add('visible');
             }, 100);
         }
 
@@ -1070,10 +1975,11 @@
             // Handle clicks on example questions
             document.querySelectorAll('.example-question').forEach(button => {
                 button.addEventListener('click', async () => {
-                    if (!elements.searchQuery) return;
-                    const query = button.getAttribute('data-query');
-                    elements.searchQuery.value = query;
-                    await handleSearch();
+                    if (elements.searchQuery) {
+                        const query = button.getAttribute('data-query');
+                        elements.searchQuery.value = query;
+                        await handleSearch();
+                    }
                 });
             });
         }
@@ -1083,7 +1989,41 @@
             const themeToggle = document.getElementById('themeToggle');
             if (!themeToggle) return;
 
-            // ... theme toggle implementation ...
+            // Check for saved theme preference or system preference
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const isDark = savedTheme === 'dark' || (!savedTheme && systemPrefersDark);
+
+            // Set initial theme
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+                updateThemeIcon(true);
+            }
+
+            // Toggle theme function
+            function toggleTheme() {
+                const isDarkMode = document.documentElement.classList.toggle('dark');
+                localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+                updateThemeIcon(isDarkMode);
+            }
+
+            // Update theme icon
+            function updateThemeIcon(isDark) {
+                themeToggle.innerHTML = isDark ? `
+                    <svg class="h-5 w-5 text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                ` : `
+                    <svg class="h-5 w-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                `;
+            }
+
+            // Add click handler
+            themeToggle.addEventListener('click', toggleTheme);
         }
 
         // Setup Keyboard Shortcuts
@@ -1315,7 +2255,7 @@
                     setTimeout(() => toastEl.remove(), 300);
                 }, 5000);
             }
-        };
+        }
 
         // Error Handler Function
         function showError(message) {
@@ -1332,44 +2272,14 @@
             toast.show(message, 'info');
         }
 
-        // Update the displayRagAnswer function
-        function displayRagAnswer(ragResult) {
-            if (!elements.ragAnswerCard || !elements.ragAnswer) return;
-
-            // Show the RAG answer card with animation
-            elements.ragAnswerCard.classList.remove('hidden');
-            elements.ragAnswerCard.style.animationDelay = '0s';
-
-            // Convert markdown to HTML and set the content
-            elements.ragAnswer.innerHTML = marked.parse(ragResult.answer);
-
-            // Update token count if available
-            const tokenCount = document.getElementById('tokenCount');
-            if (tokenCount && ragResult.token_count) {
-                tokenCount.textContent = `${ragResult.token_count} tokens`;
-            }
-
-            // Smooth scroll to results
-            document.getElementById('resultsWrapper').scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'start' 
+        // Add copy to clipboard functionality
+        function copyToClipboard() {
+            const content = document.querySelector('.prose').innerText;
+            navigator.clipboard.writeText(content).then(() => {
+                showSuccess('Content copied to clipboard');
+            }).catch(() => {
+                showError('Failed to copy content');
             });
-        }
-
-        // Add regenerateAnswer function for completeness
-        async function regenerateAnswer() {
-            if (!state.currentResults || !elements.searchQuery) return;
-            
-            const query = elements.searchQuery.value.trim();
-            if (!query) return;
-            
-            try {
-                await generateRagAnswer(query, state.currentResults);
-                showSuccess('Answer regenerated successfully');
-            } catch (error) {
-                showError('Failed to regenerate answer');
-                console.error('Regeneration error:', error);
-            }
         }
 
         // Update the switchProfile function
@@ -1401,6 +2311,12 @@
             if (currentEmail) currentEmail.textContent = userEmail;
             if (currentId) currentId.textContent = userId;
 
+            // Update upload button visibility based on group
+            const uploadButton = document.getElementById('toggleUpload');
+            if (uploadButton) {
+                uploadButton.style.display = groupId === 'management' ? 'block' : 'none';
+            }
+
             // Update active indicators
             document.querySelectorAll('[data-group-id]').forEach(button => {
                 button.classList.remove('bg-gray-50');
@@ -1416,11 +2332,6 @@
                 </svg>
             `);
 
-            // Perform search with new group if there's an active search
-            if (state.hasSearched && elements.searchQuery.value.trim()) {
-                handleSearch();
-            }
-
             // Close the dropdown
             const profileMenu = document.getElementById('profileMenu');
             if (profileMenu) profileMenu.classList.add('hidden');
@@ -1428,11 +2339,34 @@
             // Update aria-expanded state
             if (profileButton) profileButton.setAttribute('aria-expanded', 'false');
 
+            // Perform search with new group if there's an existing query
+            const currentQuery = elements.searchQuery?.value.trim();
+            if (currentQuery) {
+                handleSearch();
+            }
+
             // Show feedback
             showSuccess(`Switched to ${userName}'s profile`);
         }
 
-        // Chat Widget Functionality
+        // Update the regenerateAnswer function
+        async function regenerateAnswer() {
+            if (!elements.searchQuery) return;
+            
+            const query = elements.searchQuery.value.trim();
+            if (!query) return;
+            
+            try {
+                // Perform a new search first
+                await handleSearch();
+                showSuccess('Answer regenerated successfully');
+            } catch (error) {
+                showError('Failed to regenerate answer');
+                console.error('Regeneration error:', error);
+            }
+        }
+
+        // Update Chat Widget Functionality
         function initializeChatWidget() {
             const chatToggle = document.getElementById('chatToggle');
             const chatWindow = document.getElementById('chatWindow');
@@ -1449,7 +2383,7 @@
                 chatWindow.classList.remove('active');
             }
 
-            function sendMessage() {
+            async function sendMessage() {
                 const message = chatInput.value.trim();
                 if (!message) return;
 
@@ -1457,18 +2391,116 @@
                 addMessage(message, 'user');
                 chatInput.value = '';
 
-                // Simulate bot response
-                setTimeout(() => {
-                    addMessage("Thanks for your message! This is a dummy response from the support bot.", 'bot');
-                }, 1000);
+                // Add typing indicator
+                const typingIndicator = addTypingIndicator();
+
+                try {
+                    // Get current active profile's group ID
+                    const activeProfile = document.querySelector('[data-group-id].bg-gray-50');
+                    const groupId = activeProfile ? activeProfile.dataset.groupId : 'all_employees';
+
+                    // Perform search
+                    const searchPayload = {
+                        search_query: message,
+                        group_id: groupId,
+                        search_options: {
+                            full_text: true,
+                            exact_match: false
+                        }
+                    };
+
+                    const searchResponse = await fetch('/search', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify(searchPayload)
+                    });
+
+                    if (!searchResponse.ok) {
+                        throw new Error('Search failed');
+                    }
+
+                    const searchResults = await searchResponse.json();
+
+                    // Generate RAG answer if we have search results
+                    if (searchResults.length > 0) {
+                        const context = searchResults.map(r => r.content).join('\n\n');
+                        const ragResponse = await fetch('/generate_answer', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                query: message,
+                                context: context,
+                                sources: searchResults.map(r => ({
+                                    title: r.title,
+                                    score: r.score
+                                }))
+                            })
+                        });
+
+                        if (!ragResponse.ok) {
+                            throw new Error('Failed to generate answer');
+                        }
+
+                        const ragResult = await ragResponse.json();
+                        
+                        // Remove typing indicator
+                        removeTypingIndicator(typingIndicator);
+                        
+                        // Add bot response with the generated answer
+                        addMessage(ragResult.answer, 'bot');
+
+                    } else {
+                        removeTypingIndicator(typingIndicator);
+                        addMessage("I couldn't find any relevant information to answer your question.", 'bot');
+                    }
+
+                } catch (error) {
+                    console.error('Chat error:', error);
+                    removeTypingIndicator(typingIndicator);
+                    addMessage("I'm sorry, I encountered an error while processing your request.", 'bot');
+                }
             }
 
-            function addMessage(text, type) {
+            function addMessage(text, type, className = '') {
                 const messageDiv = document.createElement('div');
-                messageDiv.className = `message ${type}`;
-                messageDiv.textContent = text;
+                messageDiv.className = `message ${type} ${className}`;
+                
+                // Convert markdown to HTML if it's a bot message
+                if (type === 'bot') {
+                    messageDiv.innerHTML = marked.parse(text);
+                } else {
+                    messageDiv.textContent = text;
+                }
+                
                 chatMessages.appendChild(messageDiv);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function addTypingIndicator() {
+                const typingDiv = document.createElement('div');
+                typingDiv.className = 'message bot typing-indicator';
+                typingDiv.innerHTML = `
+                    <div class="typing-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                `;
+                chatMessages.appendChild(typingDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                return typingDiv;
+            }
+
+            function removeTypingIndicator(element) {
+                if (element && element.parentNode) {
+                    element.parentNode.removeChild(element);
+                }
             }
 
             // Event Listeners
@@ -1482,9 +2514,176 @@
             });
         }
 
+        // Add typing indicator styles
+        const styleSheet = document.createElement("style");
+        styleSheet.textContent = `
+            .typing-indicator {
+                padding: 0.75rem !important;
+            }
+
+            .typing-dots {
+                display: flex;
+                gap: 4px;
+            }
+
+            .typing-dots span {
+                width: 8px;
+                height: 8px;
+                background: #e2e8f0;
+                border-radius: 50%;
+                animation: bounce 0.8s infinite;
+            }
+
+            .typing-dots span:nth-child(2) {
+                animation-delay: 0.2s;
+            }
+
+            .typing-dots span:nth-child(3) {
+                animation-delay: 0.4s;
+            }
+
+            .message.sources {
+                font-size: 0.875rem;
+                color: #6b7280;
+                background: #f3f4f6;
+            }
+
+            @keyframes bounce {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-4px); }
+            }
+        `;
+        document.head.appendChild(styleSheet);
+
         // Initialize chat widget when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
             initializeChatWidget();
+        });
+
+        // Add scroll handler for smooth transitions
+        window.addEventListener('scroll', () => {
+            const searchContainer = document.querySelector('.search-container');
+            const searchFormWrapper = document.querySelector('.search-form-wrapper');
+            
+            if (searchContainer.classList.contains('has-results')) {
+                if (window.scrollY > 0) {
+                    searchFormWrapper.classList.add('sticky');
+                } else {
+                    searchFormWrapper.classList.remove('sticky');
+                }
+            }
+        });
+
+        // Add initial upload button visibility check
+        document.addEventListener('DOMContentLoaded', function() {
+            const uploadButton = document.getElementById('toggleUpload');
+            const currentGroup = document.getElementById('currentUserGroup');
+            
+            if (uploadButton && currentGroup) {
+                uploadButton.style.display = currentGroup.textContent === 'management' ? 'block' : 'none';
+            }
+        });
+
+        // Add scroll event listener to handle sticky search bar
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchFormWrapper = document.querySelector('.search-form-wrapper');
+            const header = document.querySelector('header');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > header.offsetHeight) {
+                    searchFormWrapper.classList.add('sticky');
+                } else {
+                    searchFormWrapper.classList.remove('sticky');
+                }
+            });
+        });
+
+        // Add this to your initialization code
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchFormWrapper = document.querySelector('.search-form-wrapper');
+            
+            // Reset position when going back to home/empty state
+            elements.searchQuery?.addEventListener('input', (e) => {
+                if (!e.target.value.trim()) {
+                    searchFormWrapper.classList.remove('sticky');
+                    document.querySelector('.main-content').style.paddingTop = 'var(--header-height)';
+                }
+            });
+        });
+
+        // Add scroll event listener
+        window.addEventListener('scroll', handleSearchFormPosition);
+
+        // Add this function before handleSearch
+        async function performSearch(query) {
+            // Get the active profile's group ID
+            const activeProfile = document.querySelector('[data-group-id].bg-gray-50');
+            const groupId = activeProfile ? activeProfile.dataset.groupId : 'all_employees';
+
+            const searchPayload = {
+                search_query: query,
+                group_id: groupId,
+                search_options: {
+                    full_text: true,
+                    exact_match: false
+                }
+            };
+
+            const response = await fetch('/search', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(searchPayload)
+            });
+
+            if (!response.ok) {
+                throw new Error('Search failed');
+            }
+
+            const results = await response.json();
+
+            // Add has-results class to search container
+            const searchContainer = document.querySelector('.search-container');
+            searchContainer?.classList.add('has-results');
+
+            return results;
+        }
+
+        // Update the search form positioning logic
+        function handleSearchFormPosition() {
+            const searchFormWrapper = document.querySelector('.search-form-wrapper');
+            const contentContainer = document.querySelector('.content-container');
+            const header = document.querySelector('header');
+            const scrollY = window.scrollY;
+            
+            // Get search form height
+            const searchFormHeight = searchFormWrapper.offsetHeight;
+            
+            // Update CSS variable for search form height
+            document.documentElement.style.setProperty('--search-form-height', `${searchFormHeight}px`);
+            
+            if (scrollY > header.offsetHeight) {
+                searchFormWrapper.classList.add('sticky');
+                // Add padding to content container to prevent jump
+                contentContainer.style.paddingTop = `${searchFormHeight}px`;
+            } else {
+                searchFormWrapper.classList.remove('sticky');
+                contentContainer.style.paddingTop = '0';
+            }
+        }
+
+        // Update the HTML structure in your template
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initial calculation of search form height
+            handleSearchFormPosition();
+            
+            // Add scroll event listener
+            window.addEventListener('scroll', handleSearchFormPosition);
+            
+            // Add resize event listener to recalculate heights
+            window.addEventListener('resize', handleSearchFormPosition);
         });
     </script>
 </body>
