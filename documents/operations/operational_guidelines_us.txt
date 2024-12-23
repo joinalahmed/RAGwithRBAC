@@ -1,0 +1,66 @@
+## Comprehensive Operational Guidelines for the United States
+
+### 1. Office Policies
+
+#### 1.1 Code of Conduct
+- **Professionalism**: Employees are expected to maintain a professional demeanor at all times, including respectful communication and appropriate attire.
+- **Harassment-Free Workplace**: Zero tolerance for any form of harassment or discrimination. Report any incidents to HR immediately.
+- **Confidentiality**: Employees must protect sensitive information and adhere to data privacy regulations.
+  
+#### 1.2 Attendance and Punctuality
+- **Attendance**: Employees are required to report to work on time and notify supervisors in advance of absences.
+- **Leave Policies**: Employees must follow established procedures for requesting vacation, sick leave, or personal days.
+
+#### 1.3 Performance Evaluations
+- **Regular Reviews**: Conduct performance evaluations bi-annually to provide feedback on job performance, set goals, and identify areas for development.
+
+### 2. Work Hours and Flexibility
+
+#### 2.1 Standard Work Hours
+- **Core Hours**: Typical office hours are Monday through Friday, 9 AM to 5 PM (local time).
+  
+#### 2.2 Flexible Work Arrangements
+- **Remote Work**: Employees may be eligible for remote work based on their role and manager approval.
+- **Flexible Scheduling**: Employees can request flexible hours; however, this must be coordinated with their supervisor to ensure coverage.
+
+### 3. Equipment and Resources
+
+#### 3.1 Equipment Provision
+- **Workstation Setup**: The company will provide necessary equipment such as computers, monitors, and ergonomic furniture.
+- **Personal Devices**: Use of personal devices for work purposes is subject to IT approval and must comply with security protocols.
+
+#### 3.2 Resource Access
+- **Software and Tools**: Employees must use company-approved software for data management, communication, and project collaboration.
+- **Training Resources**: Access to training materials, workshops, and professional development tools will be provided.
+
+### 4. Security Protocols
+
+#### 4.1 Physical Security
+- **Access Control**: Employees must wear identification badges at all times and report unauthorized individuals.
+- **Visitor Policy**: All visitors must be signed in at reception and escorted by an employee.
+
+#### 4.2 Data Security
+- **Password Management**: Employees must use strong passwords and change them regularly.
+- **Data Encryption**: Sensitive data must be encrypted during transmission and when stored.
+
+#### 4.3 Cybersecurity Training
+- **Regular Training**: Employees must complete annual cybersecurity training to recognize phishing attempts and other threats.
+
+### 5. Emergency Procedures
+
+#### 5.1 Emergency Contacts
+- **Emergency Numbers**: Post emergency contact numbers (e.g., fire department, police) prominently in the workplace.
+  
+#### 5.2 Evacuation Plan
+- **Exit Routes**: Clearly mark all exits and conduct regular fire drills.
+- **Assembly Points**: Designate assembly points outside the building where employees should gather after evacuation.
+
+#### 5.3 Incident Reporting
+- **Reporting Protocols**: Employees must report any incidents (injuries, security breaches) to their supervisor immediately.
+  
+#### 5.4 First Aid and Health Emergencies
+- **First Aid Kits**: Maintain first aid kits in accessible locations; ensure staff are trained in basic first aid procedures.
+
+---
+
+These operational guidelines are designed to create a safe, respectful, and efficient workplace environment while ensuring compliance with legal regulations and organizational standards. Regular reviews and updates will be conducted to adapt to changing circumstances and improve operational effectiveness.

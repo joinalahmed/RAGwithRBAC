@@ -1,0 +1,134 @@
+# Band Structure Documentation for INDIA
+
+## 1. Individual Contributor Bands
+
+The following outlines the Individual Contributor (IC) bands with their corresponding levels, titles, and salary ranges:
+
+| Level | Title         | Salary Range (INR)    |
+|-------|---------------|-----------------------|
+| IC1   | Associate     | 500,000 - 800,000     |
+| IC2   | Professional   | 700,000 - 1,200,000   |
+| IC3   | Senior        | 1,100,000 - 2,000,000 |
+| IC4   | Principal     | 1,800,000 - 3,500,000 |
+| IC5   | Distinguished | 3,000,000 - 6,000,000 |
+| IC6   | Fellow        | 5,000,000 - 9,000,000 |
+
+### Overview
+- **IC1 (Associate)**: Entry-level positions focused on basic tasks and learning.
+- **IC2 (Professional)**: Requires some experience; contributes to projects and begins taking on more responsibilities.
+- **IC3 (Senior)**: Significant experience and expertise; often leads small projects or teams.
+- **IC4 (Principal)**: Highly experienced; responsible for strategic direction and mentoring others.
+- **IC5 (Distinguished)**: Recognized leader in the field; drives innovation and major projects.
+- **IC6 (Fellow)**: Top-tier expert with substantial impact on the organization and industry.
+
+---
+
+## 2. Management Bands
+
+The management bands are structured as follows:
+
+| Level | Title             | Salary Range (INR)    |
+|-------|-------------------|-----------------------|
+| M1    | Manager            | 1,500,000 - 2,500,000 |
+| M2    | Senior Manager     | 2,000,000 - 3,500,000 |
+| M3    | Director           | 3,000,000 - 5,000,000 |
+| M4    | Senior Director    | 4,500,000 - 7,500,000 |
+| M5    | VP                 | 7,000,000 - 15,000,000|
+| M6    | SVP                | 12,000,000 - 25,000,000|
+
+### Overview
+- **M1 (Manager)**: Oversees teams; responsible for performance management and project delivery.
+- **M2 (Senior Manager)**: Manages multiple teams or a significant project; involved in strategic planning.
+- **M3 (Director)**: Responsible for departmental performance; shapes strategy and policy.
+- **M4 (Senior Director)**: Senior leadership role; oversees major initiatives and cross-functional teams.
+- **M5 (VP)**: Executive role; drives company strategy and growth; represents the company externally.
+- **M6 (SVP)**: Highest level of leadership; accountable for overall success of major business units.
+
+---
+
+## 3. Job Families and Multipliers
+
+The job families define the multipliers applied to salary ranges based on specific job functions. 
+
+### Engineering
+- **Multiplier**: 1.15
+- **Roles**:
+  - Software Engineer
+  - DevOps Engineer
+  - Security Engineer
+- **Skills Premium**:
+  - AI/ML: +18%
+  - Cloud Architecture: +15%
+  - Security: +12%
+
+### Data Science
+- **Multiplier**: 1.20
+- **Roles**:
+  - Data Scientist
+  - ML Engineer
+  - Data Analyst
+- **Skills Premium**:
+  - Deep Learning: +18%
+  - NLP: +15%
+  - Computer Vision: +15%
+
+### Overview
+The multiplier is applied to the base salary to determine the total compensation based on the job family. Skills premiums can be added for specialized skills that enhance individual value.
+
+---
+
+## 4. Skills Premium Structure
+
+Skills premiums are applied to base salaries based on proficiency in high-demand skills within the organization. The following rates apply:
+
+- **AI/ML**: +18% 
+- **Deep Learning**: +18%
+- **Cloud Architecture**: +15%
+- **NLP**: +15%
+- **Computer Vision**: +15%
+- **Security**: +12%
+
+### Overview
+Professionals possessing these in-demand skills can expect enhanced compensation reflective of their expertise and value to the organization.
+
+---
+
+## 5. Career Progression Framework
+
+The Career Progression Framework outlines potential pathways for advancement within the organization:
+
+1. **Individual Contributor Path**:
+   - IC1 -> IC2 -> IC3 -> IC4 -> IC5 -> IC6
+   - Focused on skill development and increasing responsibility in technical roles.
+
+2. **Management Path**:
+   - M1 -> M2 -> M3 -> M4 -> M5 -> M6
+   - Focused on leadership development, team management, and strategic oversight.
+
+3. **Transitioning Between Paths**:
+   - Opportunities exist for high-performing individuals to transition from IC to management roles and vice versa based on interest and skill development.
+
+---
+
+## 6. Band Transition Guidelines
+
+### Transition Criteria
+Transitioning from one band to another requires meeting specific criteria:
+
+- **Performance**: Consistent high performance in current role.
+- **Skill Development**: Acquisition of skills relevant to the target band.
+- **Experience**: Minimum experience requirements as per band specifications.
+- **Feedback**: Positive feedback from peers and management during performance reviews.
+
+### Promotion Process
+1. Self-assessment against criteria.
+2. Discussion with manager regarding readiness for transition.
+3. Formal evaluation during performance review cycles.
+4. Approval by senior leadership for promotions.
+
+### Overview
+Clear guidelines for transitions ensure transparency and fairness in career advancement opportunities within the organization.
+
+---
+
+This band structure documentation serves as a comprehensive framework for understanding roles, responsibilities, and compensation within the organization in India. It is designed to facilitate career development and align employee contributions with organizational goals.

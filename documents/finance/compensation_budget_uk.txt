@@ -1,0 +1,80 @@
+# Compensation Budget Document for UK
+
+## 1. Salary Bands Budget
+
+### Individual Contributor Salary Bands
+
+| Level | Title          | Salary Range (GBP)    |
+|-------|----------------|------------------------|
+| IC1   | Associate      | £35,000 - £50,000      |
+| IC2   | Professional   | £45,000 - £75,000      |
+| IC3   | Senior         | £70,000 - £110,000     |
+| IC4   | Principal      | £100,000 - £160,000    |
+| IC5   | Distinguished  | £150,000 - £250,000    |
+| IC6   | Fellow         | £230,000 - £400,000    |
+
+### Management Salary Bands
+
+| Level | Title             | Salary Range (GBP)       |
+|-------|-------------------|---------------------------|
+| M1    | Manager           | £80,000 - £120,000       |
+| M2    | Senior Manager    | £110,000 - £170,000      |
+| M3    | Director          | £160,000 - £250,000      |
+| M4    | Senior Director    | £230,000 - £350,000      |
+| M5    | VP                | £300,000 - £600,000      |
+| M6    | SVP               | £500,000 - £900,000      |
+
+---
+
+## 2. Benefits Cost Structure
+
+### Health Insurance
+- **Provider**: BUPA
+- **Coverage**: Private
+- **Includes Dental**: No
+- **Dental Option**: Additional cost
+
+### Pension Plan
+- **Employer Contribution**: 5%
+- **Employee Minimum Contribution**: 3%
+
+---
+
+## 3. Annual Budget Planning
+
+### Overview
+The annual budget plan will incorporate salary expenses based on the defined salary bands and projected employee count within each band. The total compensation budget will also include benefits costs such as health insurance and pension contributions.
+
+### Steps:
+1. **Employee Forecasting**: Estimate the number of employees in each salary band.
+2. **Salary Calculation**: Multiply the estimated headcount by the average salary for each band.
+3. **Benefits Estimation**: Calculate the total cost of health insurance and pension contributions based on employee headcount.
+4. **Total Compensation Budget**: Sum the total salary costs and benefits costs to arrive at the overall compensation budget for the year.
+
+---
+
+## 4. Quarterly Budget Reviews
+
+### Purpose
+Quarterly reviews will help monitor expenses against the budget and make necessary adjustments in response to changes in headcount or compensation strategy.
+
+### Process:
+1. **Data Collection**: Gather actual payroll data and benefits expenditure.
+2. **Variance Analysis**: Compare actual spending versus the planned budget to identify variances.
+3. **Action Plan**: Develop action plans to address any significant variances, including reallocating budget or adjusting forecasts.
+4. **Reporting**: Prepare a quarterly report summarizing findings and recommendations to stakeholders.
+
+---
+
+## 5. Cost Optimization Strategies
+
+### Strategies:
+1. **Benchmarking Salaries**: Regularly compare salary bands with market data to ensure competitiveness without overspending.
+2. **Flexible Benefits Package**: Offer a flexible benefits option where employees can choose benefits that best suit their needs, potentially reducing overall costs.
+3. **Employee Retention Programs**: Implement programs aimed at retaining employees, reducing turnover costs associated with recruitment and training.
+4. **Performance-Based Compensation**: Align compensation increases with performance metrics to ensure rewards are linked to individual and company success.
+5. **Regular Training and Development**: Invest in employee development to improve productivity and reduce the need for costly external hires.
+
+---
+
+This compensation budget document serves as a comprehensive guide for managing employee compensation and benefits in a structured manner while ensuring alignment with business objectives and financial planning strategies.

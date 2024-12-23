@@ -1,0 +1,101 @@
+## Detailed Compensation Strategy for the US
+
+### 1. Salary Bands Structure
+
+The salary bands structure defines the compensation ranges for individual contributors and management roles within the organization. Here is a detailed breakdown:
+
+#### Individual Contributor (IC) Levels
+
+| Level | Title         | Salary Range    |
+|-------|---------------|-----------------|
+| IC1   | Associate     | $60,000 - $85,000 |
+| IC2   | Professional   | $80,000 - $120,000 |
+| IC3   | Senior        | $115,000 - $170,000 |
+| IC4   | Principal     | $160,000 - $250,000 |
+| IC5   | Distinguished | $230,000 - $400,000 |
+| IC6   | Fellow        | $350,000 - $600,000 |
+
+#### Management (M) Levels
+
+| Level | Title               | Salary Range     |
+|-------|---------------------|------------------|
+| M1    | Manager             | $130,000 - $190,000 |
+| M2    | Senior Manager      | $170,000 - $260,000 |
+| M3    | Director            | $220,000 - $350,000 |
+| M4    | Senior Director     | $300,000 - $500,000 |
+| M5    | VP                  | $400,000 - $800,000 |
+| M6    | SVP                 | $600,000 - $1,200,000 |
+
+### 2. Job Family Framework
+
+The Job Family Framework outlines the roles within different job families and includes multipliers for salary calculation based on the family and skills premium for specialized skills.
+
+#### Engineering
+
+- **Multiplier**: 1.1
+- **Roles**: Software Engineer, DevOps Engineer, Security Engineer
+- **Skills Premium**:
+  - AI/ML: 15%
+  - Cloud Architecture: 12%
+  - Security: 10%
+
+#### Data Science
+
+- **Multiplier**: 1.15
+- **Roles**: Data Scientist, ML Engineer, Data Analyst
+- **Skills Premium**:
+  - Deep Learning: 15%
+  - NLP: 12%
+  - Computer Vision: 12%
+
+#### Product
+
+- **Multiplier**: 1.0
+- **Roles**: Product Manager, Product Owner, Business Analyst
+- **Skills Premium**:
+  - Technical Background: 10%
+  - MBA: 8%
+
+#### Design
+
+- **Multiplier**: 0.95
+- **Roles**: UX Designer, UI Designer, Product Designer
+- **Skills Premium**:
+  - Design Systems: 8%
+  - User Research: 7%
+
+### 3. Market Competitiveness Analysis
+
+To ensure competitive compensation, regular market analysis will be conducted. This will involve:
+
+- Benchmarking against industry standards using salary surveys and data from reputable compensation databases (e.g., Glassdoor, Payscale).
+- Adjusting salary bands annually based on market trends and inflation rates.
+- Implementing a strategy to attract and retain top talent by ensuring salaries are competitive within the industry.
+
+### 4. Pay Equity Guidelines
+
+To promote fairness in compensation:
+
+- Conduct regular pay equity analyses to identify and address discrepancies across gender, ethnicity, and other demographics.
+- Ensure salary offers for new hires are based on their skills and experience rather than their previous salary.
+- Implement transparent pay practices to foster trust within the organization.
+
+### 5. Performance-Based Compensation
+
+Performance-based compensation will be integrated into the overall compensation package to motivate and reward high performance:
+
+- Annual performance reviews will determine merit increases within the salary range.
+- Establish key performance indicators (KPIs) that align employee goals with company objectives.
+- Bonuses will be awarded based on performance metrics and overall company profitability.
+  
+### 6. Long-term Incentive Plans
+
+Long-term incentives will help align employee interests with company performance and shareholder value:
+
+- Stock options or restricted stock units (RSUs) will be offered to eligible employees based on their level and contribution to the company’s success.
+- Vesting schedules will encourage retention and long-term commitment.
+- Performance shares may also be considered for senior leadership roles.
+
+### Conclusion
+
+This compensation strategy aims to attract, retain, and motivate talent while ensuring fairness, competitiveness, and alignment with business goals. Regular assessments and updates to this strategy will be necessary to adapt to changing market conditions and organizational needs.

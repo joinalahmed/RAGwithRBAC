@@ -1,0 +1,110 @@
+# Band Structure Documentation for the UK
+
+## 1. Individual Contributor Bands
+
+The Individual Contributor (IC) bands are designed for employees who contribute directly to the company's projects and initiatives without formal managerial responsibilities. Below is the detailed structure:
+
+| Level | Title        | Salary Range (GBP)   |
+|-------|--------------|----------------------|
+| IC1   | Associate    | 35,000 - 50,000      |
+| IC2   | Professional  | 45,000 - 75,000      |
+| IC3   | Senior       | 70,000 - 110,000     |
+| IC4   | Principal    | 100,000 - 160,000    |
+| IC5   | Distinguished | 150,000 - 250,000    |
+| IC6   | Fellow       | 230,000 - 400,000    |
+
+## 2. Management Bands
+
+The Management (M) bands are intended for employees who hold managerial positions and oversee teams or departments. The following outlines the management band structure:
+
+| Level | Title             | Salary Range (GBP)    |
+|-------|-------------------|-----------------------|
+| M1    | Manager            | 80,000 - 120,000      |
+| M2    | Senior Manager     | 110,000 - 170,000     |
+| M3    | Director           | 160,000 - 250,000     |
+| M4    | Senior Director    | 230,000 - 350,000     |
+| M5    | VP                 | 300,000 - 600,000     |
+| M6    | SVP                | 500,000 - 900,000     |
+
+## 3. Job Families and Multipliers
+
+This section provides an overview of various job families within the organization along with their associated salary multipliers and skills premiums.
+
+### Engineering
+- **Multiplier**: 1.1
+- **Roles**: 
+  - Software Engineer
+  - DevOps Engineer
+  - Security Engineer
+- **Skills Premium**:
+  - AI/ML: +12%
+  - Cloud Architecture: +10%
+  - Security: +8%
+
+### Data Science
+- **Multiplier**: 1.12
+- **Roles**: 
+  - Data Scientist
+  - ML Engineer
+  - Data Analyst
+- **Skills Premium**:
+  - Deep Learning: +12%
+  - NLP: +10%
+  - Computer Vision: +10%
+
+## 4. Skills Premium Structure
+
+The Skills Premium Structure enhances the base salary based on specific high-demand skills. Employees possessing advanced skills in specific areas will receive a percentage increase in their compensation as follows:
+
+- **AI/ML**: +12%
+- **Deep Learning**: +12%
+- **Cloud Architecture**: +10%
+- **NLP**: +10%
+- **Computer Vision**: +10%
+- **Security**: +8%
+
+These premiums are additive to the base salary and the job family multipliers.
+
+## 5. Career Progression Framework
+
+The Career Progression Framework outlines the pathways available for employees to advance in their careers within the organization. Each level requires certain competencies and achievements:
+
+1. **IC1 to IC2**:
+   - Demonstrate basic proficiency in role and responsibilities.
+   - Contribute independently to team projects.
+
+2. **IC2 to IC3**:
+   - Exhibit advanced technical skills and problem-solving abilities.
+   - Mentor junior team members.
+
+3. **IC3 to IC4**:
+   - Lead projects or significant components of projects.
+   - Influence technical direction within the team.
+
+4. **IC4 to IC5**:
+   - Recognized as an expert in a specific field or technology.
+   - Drive innovation and strategic initiatives.
+
+5. **IC5 to IC6**:
+   - Lead organizational-wide initiatives.
+   - Contribute to industry standards and frameworks.
+
+For management bands, similar competencies apply with emphasis on leadership, team development, and strategic planning.
+
+## 6. Band Transition Guidelines
+
+Transitioning between bands requires adherence to certain guidelines to ensure fairness and transparency:
+
+- **Eligibility for Promotion**:
+  Employees must demonstrate readiness for promotion by meeting performance metrics and competencies associated with the target level.
+  
+- **Performance Reviews**:
+  Regular performance reviews will be conducted to assess readiness for transition. Employees should prepare by documenting accomplishments and obtaining feedback.
+  
+- **Training and Development**:
+  Employees are encouraged to seek professional development opportunities that align with their career goals and competencies required for higher bands.
+
+- **Mentorship Programs**:
+  Participation in mentorship programs can provide guidance and support for career advancement.
+
+By adhering to this structured band system, the organization aims to foster a culture of growth, recognition, and equitable compensation for its employees across all levels.

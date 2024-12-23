@@ -1,0 +1,113 @@
+# Compensation Budget Document for India
+
+## 1. Salary Bands Budget
+
+### Individual Contributor
+
+| Level | Title          | Salary Range (INR)    |
+|-------|----------------|------------------------|
+| IC1   | Associate      | 500,000 - 800,000      |
+| IC2   | Professional   | 700,000 - 1,200,000    |
+| IC3   | Senior         | 1,100,000 - 2,000,000  |
+| IC4   | Principal      | 1,800,000 - 3,500,000  |
+| IC5   | Distinguished  | 3,000,000 - 6,000,000  |
+| IC6   | Fellow         | 5,000,000 - 9,000,000  |
+
+### Management
+
+| Level | Title             | Salary Range (INR)    |
+|-------|-------------------|------------------------|
+| M1    | Manager           | 1,500,000 - 2,500,000  |
+| M2    | Senior Manager    | 2,000,000 - 3,500,000  |
+| M3    | Director          | 3,000,000 - 5,000,000  |
+| M4    | Senior Director    | 4,500,000 - 7,500,000  |
+| M5    | VP                | 7,000,000 - 15,000,000 |
+| M6    | SVP               | 12,000,000 - 25,000,000|
+
+---
+
+## 2. Benefits Cost Structure
+
+### Health Insurance
+- **Coverage**: Family
+- **Includes Dental**: Yes
+- **Sum Insured**: ₹5 Lakhs
+
+### Provident Fund
+- **Employer Contribution**: 12%
+- **Employee Contribution**: 12%
+
+---
+
+## 3. Annual Budget Planning
+
+### Key Components
+- **Salaries**: Based on the salary bands outlined above.
+- **Benefits**: Calculate the expected costs associated with health insurance and provident fund contributions.
+- **Total Headcount**: Estimate the number of employees at each level to determine total payroll expenses.
+
+### Example Calculation:
+Assuming a headcount of:
+- IC1: 20 employees
+- IC2: 15 employees
+- IC3: 10 employees
+- IC4: 5 employees
+- M1: 5 employees
+- M2: 3 employees
+
+#### Total Salary Estimate:
+```
+IC1: 20 * Avg(500k-800k) = 20 * (650000) = ₹13,000,000
+IC2: 15 * Avg(700k-1200k) = 15 * (950000) = ₹14,250,000
+IC3: 10 * Avg(1100k-2000k) = 10 * (1550000) = ₹15,500,000
+IC4: 5 * Avg(1800k-3500k) = 5 * (2650000) = ₹13,250,000
+M1: 5 * Avg(1500k-2500k) = 5 * (2000000) = ₹10,000,000
+M2: 3 * Avg(2000k-3500k) = 3 * (2750000) = ₹8,250,000
+```
+
+#### Total Salaries:
+```
+Total Salary Expense = ₹13M + ₹14.25M + ₹15.5M + ₹13.25M + ₹10M + ₹8.25M = ₹74.25M
+```
+
+#### Annual Benefits Estimate:
+```
+Health Insurance Cost = (total headcount) * (sum insured)
+= (63 employees) * (500,000) = ₹31.5M
+```
+
+#### Total Annual Budget:
+```
+Total Annual Budget = Total Salary Expense + Annual Benefits Estimate
+= ₹74.25M + ₹31.5M = ₹105.75M
+```
+
+---
+
+## 4. Quarterly Budget Reviews
+
+### Process Overview
+1. **Review Actual vs. Budgeted Salaries**: Compare actual salaries paid versus budgeted amounts.
+2. **Evaluate Benefits Costs**: Assess any variances in health insurance or provident fund contributions.
+3. **Adjust Forecasts**: If there are significant variances from the budgeted amounts during the first quarter review, adjust forecasts for subsequent quarters.
+
+### Reporting Format:
+- **Quarterly Report**: Present a summary of actual expenses against the budget for:
+    - Salaries
+    - Benefits
+    - Variance analysis and explanations.
+
+---
+
+## 5. Cost Optimization Strategies
+
+### Strategies to Consider:
+1. **Benchmarking Salaries**: Regularly review market salary data to ensure competitiveness without overpaying.
+2. **Flexible Benefits**: Offer flexible benefits that employees can choose from according to their needs which could potentially reduce costs.
+3. **Performance-based Incentives**: Shift some fixed salary components to performance-based incentives to align compensation with company performance.
+4. **Talent Management**: Invest in training and development to enhance employee productivity rather than hiring more staff.
+5. **Regular Audits**: Conduct regular audits of the compensation structure to identify areas for cost-saving without compromising employee satisfaction.
+
+---
+
+This compensation budget document serves as a guideline for managing salary and benefits expenditure effectively while ensuring alignment with organizational goals and employee satisfaction in India. Regular updates and reviews will ensure the budget remains relevant and optimized throughout the fiscal year.

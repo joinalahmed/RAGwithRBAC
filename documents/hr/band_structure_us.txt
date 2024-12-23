@@ -1,0 +1,136 @@
+# Band Structure Documentation for the United States
+
+## 1. Individual Contributor Bands
+
+The Individual Contributor (IC) bands represent the different levels of expertise and responsibility for employees who do not manage others but contribute significantly to their field. The following are the current bands:
+
+| Level | Title         | Salary Range (USD) |
+|-------|---------------|---------------------|
+| IC1   | Associate     | $60,000 - $85,000   |
+| IC2   | Professional   | $80,000 - $120,000  |
+| IC3   | Senior        | $115,000 - $170,000 |
+| IC4   | Principal     | $160,000 - $250,000 |
+| IC5   | Distinguished | $230,000 - $400,000 |
+| IC6   | Fellow        | $350,000 - $600,000 |
+
+### Description of Individual Contributor Bands:
+- **IC1 (Associate)**: Entry-level position requiring foundational skills in the relevant domain.
+- **IC2 (Professional)**: Requires proficiency and experience, working independently on projects.
+- **IC3 (Senior)**: Recognized for their expertise; mentors junior staff and leads projects.
+- **IC4 (Principal)**: High-level experts who influence strategy and direction in their field.
+- **IC5 (Distinguished)**: Industry leaders with significant contributions to the field and organization.
+- **IC6 (Fellow)**: Top-tier expert recognized both internally and externally for their influence and thought leadership.
+
+---
+
+## 2. Management Bands
+
+Management bands cater to those who oversee teams and projects. The following levels outline roles and salary expectations:
+
+| Level | Title              | Salary Range (USD)   |
+|-------|--------------------|-----------------------|
+| M1    | Manager            | $130,000 - $190,000   |
+| M2    | Senior Manager     | $170,000 - $260,000   |
+| M3    | Director           | $220,000 - $350,000   |
+| M4    | Senior Director    | $300,000 - $500,000   |
+| M5    | VP                 | $400,000 - $800,000   |
+| M6    | SVP                | $600,000 - $1,200,000 |
+
+### Description of Management Bands:
+- **M1 (Manager)**: Oversees small teams; responsible for delivering team objectives.
+- **M2 (Senior Manager)**: Manages larger teams or multiple teams with broader responsibilities.
+- **M3 (Director)**: Sets strategic direction; accountable for multiple business areas.
+- **M4 (Senior Director)**: Senior leadership role focusing on long-term strategy.
+- **M5 (VP)**: Executive-level role; drives company-wide initiatives and strategy.
+- **M6 (SVP)**: Top executive role influencing the overall vision and direction of the organization.
+
+---
+
+## 3. Job Families and Multipliers
+
+Job families categorize roles based on their functions and responsibilities. Each family has a multiplier applied to the base band salary ranges.
+
+### Job Families
+
+#### Engineering
+- **Multiplier**: 1.1
+- **Roles**: Software Engineer, DevOps Engineer, Security Engineer
+- **Skills Premium**:
+  - AI/ML: 0.15
+  - Cloud Architecture: 0.12
+  - Security: 0.10
+
+#### Data Science
+- **Multiplier**: 1.15
+- **Roles**: Data Scientist, ML Engineer, Data Analyst
+- **Skills Premium**:
+  - Deep Learning: 0.15
+  - NLP: 0.12
+  - Computer Vision: 0.12
+
+#### Product
+- **Multiplier**: 1.0
+- **Roles**: Product Manager, Product Owner, Business Analyst
+- **Skills Premium**:
+  - Technical Background: 0.10
+  - MBA: 0.08
+
+#### Design
+- **Multiplier**: 0.95
+- **Roles**: UX Designer, UI Designer, Product Designer
+- **Skills Premium**:
+  - Design Systems: 0.08
+  - User Research: 0.07
+
+---
+
+## 4. Skills Premium Structure
+
+The Skills Premium Structure provides additional compensation based on specialized skills that enhance employee value. The following are examples of premiums applied to specific skills within job families:
+
+- **Engineering**
+  - AI/ML: +15%
+  - Cloud Architecture: +12%
+  - Security: +10%
+
+- **Data Science**
+  - Deep Learning: +15%
+  - NLP: +12%
+  - Computer Vision: +12%
+
+- **Product**
+  - Technical Background: +10%
+  - MBA: +8%
+
+- **Design**
+  - Design Systems: +8%
+  - User Research: +7%
+
+---
+
+## 5. Career Progression Framework
+
+The Career Progression Framework outlines potential paths within the organization for both Individual Contributors and Management roles.
+
+### Individual Contributor Progression:
+- Starting from IC1 → IC2 → IC3 → IC4 → IC5 → IC6
+- Transitioning may require demonstrated expertise, taking on complex projects, or leading initiatives.
+
+### Management Progression:
+- Starting from M1 → M2 → M3 → M4 → M5 → M6 
+- Transitioning may require demonstrated leadership capabilities and successful management of teams or projects.
+
+---
+
+## 6. Band Transition Guidelines
+
+Transitioning between bands should be based on several factors including performance evaluations, contributions to the team and organization, skill acquisition, leadership experiences and market demand.
+
+### Guidelines:
+1. **Performance Reviews**: Regular assessments detailing achievements and areas for improvement.
+2. **Skill Development**: Proactive learning and upskilling in relevant areas.
+3. **Mentorship**: Seeking guidance from higher band members for career advice and growth.
+4. **Project Leadership**: Taking on lead roles in significant projects as a demonstration of capability.
+5. **Market Research**: Staying informed about industry standards and benchmarks for compensation and responsibilities.
+
+This document serves as a comprehensive guide to understanding the band structure within the organization and the potential career pathways available to employees in the United States.

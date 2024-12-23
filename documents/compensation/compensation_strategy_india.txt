@@ -1,0 +1,91 @@
+## Compensation Strategy for India
+
+### 1. Salary Bands Structure
+
+The salary bands are categorized into two main groups: Individual Contributors (IC) and Management (M). Each group has defined levels and corresponding salary ranges:
+
+**Individual Contributor (IC)**
+
+| Level | Title          | Salary Range (INR)     |
+|-------|----------------|-------------------------|
+| IC1   | Associate      | 500,000 - 800,000       |
+| IC2   | Professional   | 700,000 - 1,200,000     |
+| IC3   | Senior         | 1,100,000 - 2,000,000   |
+| IC4   | Principal      | 1,800,000 - 3,500,000   |
+| IC5   | Distinguished  | 3,000,000 - 6,000,000   |
+| IC6   | Fellow         | 5,000,000 - 9,000,000   |
+
+**Management (M)**
+
+| Level | Title               | Salary Range (INR)     |
+|-------|---------------------|-------------------------|
+| M1    | Manager             | 1,500,000 - 2,500,000   |
+| M2    | Senior Manager      | 2,000,000 - 3,500,000   |
+| M3    | Director            | 3,000,000 - 5,000,000   |
+| M4    | Senior Director     | 4,500,000 - 7,500,000   |
+| M5    | VP                  | 7,000,000 - 15,000,000  |
+| M6    | SVP                 | 12,000,000 - 25,000,000 |
+
+### 2. Job Family Framework
+
+The job family framework helps to establish a clear structure for roles within the organization. Each job family has a predetermined salary multiplier based on the complexity and demand for skills in that area.
+
+**Engineering**
+
+- **Multiplier:** 1.15
+- **Roles:**
+  - Software Engineer
+  - DevOps Engineer
+  - Security Engineer
+- **Skills Premium:**
+  - AI/ML: +18%
+  - Cloud Architecture: +15%
+  - Security: +12%
+
+**Data Science**
+
+- **Multiplier:** 1.20
+- **Roles:**
+  - Data Scientist
+  - ML Engineer
+  - Data Analyst
+- **Skills Premium:**
+  - Deep Learning: +18%
+  - NLP: +15%
+  - Computer Vision: +15%
+
+### 3. Market Competitiveness Analysis
+
+To ensure competitive compensation packages:
+
+- Conduct regular market surveys to benchmark salaries against industry standards.
+- Analyze compensation data from similar organizations and sectors to remain competitive.
+- Adjust salary bands annually or biannually based on inflation rates and market shifts.
+  
+### 4. Pay Equity Guidelines
+
+To maintain fairness and transparency in compensation:
+
+- Implement strict pay equity audits to identify and rectify any discrepancies based on gender, ethnicity, or other demographics.
+- Ensure that employees in similar roles with similar experience and performance levels receive comparable compensation.
+- Promote an open dialogue regarding pay structures and adjustments to enhance trust within the organization.
+
+### 5. Performance-Based Compensation
+
+Design and implement a performance-based compensation system that aligns individual contributions with organizational goals:
+
+- Establish clear KPIs (Key Performance Indicators) for each role.
+- Use a tiered bonus system where employees can earn bonuses based on performance ratings.
+- Provide annual salary increments based on performance reviews to reward high performers.
+  
+### 6. Long-term Incentive Plans
+
+Implement long-term incentive plans (LTIPs) to motivate employees to contribute to the company's success over the long term:
+
+- Offer stock options or restricted stock units (RSUs) for key positions.
+- Design LTIPs with vesting schedules to encourage retention and align employee interests with company performance.
+- Consider profit-sharing schemes that reward employees based on the company's profitability.
+
+### Conclusion
+
+This compensation strategy aims to establish a fair and competitive salary structure that attracts and retains top talent in India. Through clear salary bands, job family frameworks, market competitiveness analysis, pay equity guidelines, performance-based compensation mechanisms, and long-term incentive plans, the organization will be well-positioned to foster a motivated and skilled workforce. Regular reviews and adjustments will be crucial to maintaining the effectiveness of this strategy over time.

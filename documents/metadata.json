@@ -1,114 +1,254 @@
 {
-  "documents/hr/leave_policy.txt": {
+  "documents/hr/leave_policy_us.txt": {
     "type": "hr",
     "access_level": "public",
     "groups": [
       "all_employees"
     ],
-    "created": "2024-12-20T20:08:35.828823",
-    "title": "Leave Policy",
-    "last_modified": "2024-12-20T20:08:35.828870"
+    "region": "us",
+    "created": "2024-12-21T20:00:00.089315",
+    "title": "Leave Policy Us",
+    "last_modified": "2024-12-21T20:00:00.089372"
   },
-  "documents/hr/workplace_safety.txt": {
+  "documents/hr/leave_policy_uk.txt": {
     "type": "hr",
     "access_level": "public",
     "groups": [
       "all_employees"
     ],
-    "created": "2024-12-20T20:08:43.529537",
-    "title": "Workplace Safety",
-    "last_modified": "2024-12-20T20:08:43.529564"
+    "region": "uk",
+    "created": "2024-12-21T20:00:05.877376",
+    "title": "Leave Policy Uk",
+    "last_modified": "2024-12-21T20:00:05.877389"
   },
-  "documents/hr/compensation_guidelines.txt": {
+  "documents/hr/leave_policy_india.txt": {
     "type": "hr",
-    "access_level": "restricted",
+    "access_level": "public",
+    "groups": [
+      "all_employees"
+    ],
+    "region": "india",
+    "created": "2024-12-21T20:00:12.327900",
+    "title": "Leave Policy India",
+    "last_modified": "2024-12-21T20:00:12.327909"
+  },
+  "documents/hr/benefits_guide_us.txt": {
+    "type": "hr",
+    "access_level": "internal",
+    "groups": [
+      "all_employees",
+      "hr_group"
+    ],
+    "region": "us",
+    "created": "2024-12-21T20:00:18.370757",
+    "title": "Benefits Guide Us",
+    "last_modified": "2024-12-21T20:00:18.370777"
+  },
+  "documents/hr/benefits_guide_uk.txt": {
+    "type": "hr",
+    "access_level": "internal",
+    "groups": [
+      "all_employees",
+      "hr_group"
+    ],
+    "region": "uk",
+    "created": "2024-12-21T20:00:25.606131",
+    "title": "Benefits Guide Uk",
+    "last_modified": "2024-12-21T20:00:25.606140"
+  },
+  "documents/hr/benefits_guide_india.txt": {
+    "type": "hr",
+    "access_level": "internal",
+    "groups": [
+      "all_employees",
+      "hr_group"
+    ],
+    "region": "india",
+    "created": "2024-12-21T20:00:31.825474",
+    "title": "Benefits Guide India",
+    "last_modified": "2024-12-21T20:00:31.825485"
+  },
+  "documents/hr/band_structure_us.txt": {
+    "type": "hr",
+    "access_level": "confidential",
     "groups": [
       "hr_group",
-      "management"
+      "management",
+      "compensation_team"
     ],
-    "created": "2024-12-20T20:08:50.001078",
-    "title": "Compensation Guidelines",
-    "last_modified": "2024-12-20T20:08:50.001116"
+    "region": "us",
+    "created": "2024-12-21T20:00:40.644152",
+    "title": "Band Structure Us",
+    "last_modified": "2024-12-21T20:00:40.644158"
   },
-  "documents/hr/personnel_records_policies.txt": {
+  "documents/hr/band_structure_uk.txt": {
     "type": "hr",
-    "access_level": "restricted",
+    "access_level": "confidential",
     "groups": [
-      "hr_group"
+      "hr_group",
+      "management",
+      "compensation_team"
     ],
-    "created": "2024-12-20T20:08:55.331343",
-    "title": "Personnel Records Policies",
-    "last_modified": "2024-12-20T20:08:55.331369"
+    "region": "uk",
+    "created": "2024-12-21T20:00:47.499799",
+    "title": "Band Structure Uk",
+    "last_modified": "2024-12-21T20:00:47.499819"
   },
-  "documents/hr/personnel_records.txt": {
+  "documents/hr/band_structure_india.txt": {
     "type": "hr",
-    "access_level": "restricted",
+    "access_level": "confidential",
     "groups": [
-      "hr_group"
+      "hr_group",
+      "management",
+      "compensation_team"
     ],
-    "created": "2024-12-20T20:08:57.471526",
-    "title": "Personnel Records",
-    "last_modified": "2024-12-20T20:08:57.471548"
+    "region": "india",
+    "created": "2024-12-21T20:00:56.486562",
+    "title": "Band Structure India",
+    "last_modified": "2024-12-21T20:00:56.486568"
   },
-  "documents/finance/expense_guidelines.txt": {
-    "type": "finance",
-    "access_level": "public",
-    "groups": [
-      "all_employees"
-    ],
-    "created": "2024-12-20T20:09:05.311420",
-    "title": "Expense Guidelines",
-    "last_modified": "2024-12-20T20:09:05.311443"
-  },
-  "documents/finance/financial_forecasts.txt": {
+  "documents/finance/financial_planning_us.txt": {
     "type": "finance",
     "access_level": "restricted",
     "groups": [
       "finance_group",
       "management"
     ],
-    "created": "2024-12-20T20:09:12.252023",
-    "title": "Financial Forecasts",
-    "last_modified": "2024-12-20T20:09:12.252030"
+    "region": "us",
+    "created": "2024-12-21T20:01:05.446914",
+    "title": "Financial Planning Us",
+    "last_modified": "2024-12-21T20:01:05.446931"
   },
-  "documents/operations/company_handbook.txt": {
+  "documents/finance/financial_planning_uk.txt": {
+    "type": "finance",
+    "access_level": "restricted",
+    "groups": [
+      "finance_group",
+      "management"
+    ],
+    "region": "uk",
+    "created": "2024-12-21T20:01:13.426650",
+    "title": "Financial Planning Uk",
+    "last_modified": "2024-12-21T20:01:13.426673"
+  },
+  "documents/finance/financial_planning_india.txt": {
+    "type": "finance",
+    "access_level": "restricted",
+    "groups": [
+      "finance_group",
+      "management"
+    ],
+    "region": "india",
+    "created": "2024-12-21T20:01:19.698117",
+    "title": "Financial Planning India",
+    "last_modified": "2024-12-21T20:01:19.698128"
+  },
+  "documents/finance/compensation_budget_us.txt": {
+    "type": "finance",
+    "access_level": "classified",
+    "groups": [
+      "finance_group",
+      "management",
+      "compensation_team"
+    ],
+    "region": "us",
+    "created": "2024-12-21T20:01:25.675744",
+    "title": "Compensation Budget Us",
+    "last_modified": "2024-12-21T20:01:25.675770"
+  },
+  "documents/finance/compensation_budget_uk.txt": {
+    "type": "finance",
+    "access_level": "classified",
+    "groups": [
+      "finance_group",
+      "management",
+      "compensation_team"
+    ],
+    "region": "uk",
+    "created": "2024-12-21T20:01:32.254751",
+    "title": "Compensation Budget Uk",
+    "last_modified": "2024-12-21T20:01:32.254768"
+  },
+  "documents/finance/compensation_budget_india.txt": {
+    "type": "finance",
+    "access_level": "classified",
+    "groups": [
+      "finance_group",
+      "management",
+      "compensation_team"
+    ],
+    "region": "india",
+    "created": "2024-12-21T20:01:41.171582",
+    "title": "Compensation Budget India",
+    "last_modified": "2024-12-21T20:01:41.171603"
+  },
+  "documents/operations/operational_guidelines_us.txt": {
     "type": "operations",
-    "access_level": "public",
+    "access_level": "internal",
     "groups": [
       "all_employees"
     ],
-    "created": "2024-12-20T20:09:21.955378",
-    "title": "Company Handbook",
-    "last_modified": "2024-12-20T20:09:21.955388"
+    "region": "us",
+    "created": "2024-12-21T20:01:45.796902",
+    "title": "Operational Guidelines Us",
+    "last_modified": "2024-12-21T20:01:45.796944"
   },
-  "documents/operations/strategic_plans.txt": {
+  "documents/operations/operational_guidelines_uk.txt": {
     "type": "operations",
-    "access_level": "restricted",
+    "access_level": "internal",
     "groups": [
+      "all_employees"
+    ],
+    "region": "uk",
+    "created": "2024-12-21T20:01:52.176279",
+    "title": "Operational Guidelines Uk",
+    "last_modified": "2024-12-21T20:01:52.176296"
+  },
+  "documents/operations/operational_guidelines_india.txt": {
+    "type": "operations",
+    "access_level": "internal",
+    "groups": [
+      "all_employees"
+    ],
+    "region": "india",
+    "created": "2024-12-21T20:01:58.806069",
+    "title": "Operational Guidelines India",
+    "last_modified": "2024-12-21T20:01:58.806090"
+  },
+  "documents/compensation/compensation_strategy_us.txt": {
+    "type": "compensation",
+    "access_level": "classified",
+    "groups": [
+      "compensation_team",
       "management"
     ],
-    "created": "2024-12-20T20:09:30.801550",
-    "title": "Strategic Plans",
-    "last_modified": "2024-12-20T20:09:30.801566"
+    "region": "us",
+    "created": "2024-12-21T20:02:05.301863",
+    "title": "Compensation Strategy Us",
+    "last_modified": "2024-12-21T20:02:05.301883"
   },
-  "documents/operations/expansion_plans.txt": {
-    "type": "operations",
-    "access_level": "restricted",
+  "documents/compensation/compensation_strategy_uk.txt": {
+    "type": "compensation",
+    "access_level": "classified",
     "groups": [
+      "compensation_team",
       "management"
     ],
-    "created": "2024-12-20T20:09:37.143257",
-    "title": "Expansion Plans",
-    "last_modified": "2024-12-20T20:09:37.143278"
+    "region": "uk",
+    "created": "2024-12-21T20:02:11.023789",
+    "title": "Compensation Strategy Uk",
+    "last_modified": "2024-12-21T20:02:11.023800"
   },
-  "documents/operations/acquisition_plans  .txt": {
-    "type": "operations",
-    "access_level": "restricted",
+  "documents/compensation/compensation_strategy_india.txt": {
+    "type": "compensation",
+    "access_level": "classified",
     "groups": [
+      "compensation_team",
       "management"
     ],
-    "created": "2024-12-20T20:09:45.317186",
-    "title": "Acquisition Plans  ",
-    "last_modified": "2024-12-20T20:09:45.317204"
+    "region": "india",
+    "created": "2024-12-21T20:02:17.984203",
+    "title": "Compensation Strategy India",
+    "last_modified": "2024-12-21T20:02:17.984223"
   }
 }

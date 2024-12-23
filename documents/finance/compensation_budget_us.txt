@@ -1,0 +1,108 @@
+# Compensation Budget Documentation for the United States
+
+## 1. Salary Bands Budget
+
+### Individual Contributor Salary Bands
+
+| Level | Title          | Salary Range       |
+|-------|----------------|--------------------|
+| IC1   | Associate      | $60,000 - $85,000  |
+| IC2   | Professional   | $80,000 - $120,000 |
+| IC3   | Senior         | $115,000 - $170,000|
+| IC4   | Principal      | $160,000 - $250,000|
+| IC5   | Distinguished  | $230,000 - $400,000|
+| IC6   | Fellow         | $350,000 - $600,000|
+
+### Management Salary Bands
+
+| Level | Title               | Salary Range        |
+|-------|---------------------|---------------------|
+| M1    | Manager             | $130,000 - $190,000 |
+| M2    | Senior Manager      | $170,000 - $260,000 |
+| M3    | Director            | $220,000 - $350,000 |
+| M4    | Senior Director     | $300,000 - $500,000 |
+| M5    | VP                  | $400,000 - $800,000 |
+| M6    | SVP                 | $600,000 - $1,200,000|
+
+---
+
+## 2. Benefits Cost Structure
+
+### Health Insurance
+
+- **Coverage:** 90%
+- **Providers:** 
+  - Blue Cross 
+  - United Healthcare
+- **Inclusions:** 
+  - Dental: Yes 
+  - Vision: Yes
+- **Deductible Range:** $500 - $2,500
+
+### 401(k) Match
+
+- **Percentage:** 100% match up to 6% of employee contributions
+- **Vesting Schedule:** Immediate vesting
+
+### Stock Options
+
+- **Type:** Restricted Stock Units (RSU)
+- **Vesting Schedule:** 25% per year over four years
+- **Cliff:** One-year cliff
+
+### Additional Benefits
+
+- **Wellness Allowance:** $1,000 per year
+- **Education Allowance:** $5,000 per year
+- **Home Office Allowance:** $1,000 per year
+
+---
+
+## 3. Annual Budget Planning
+
+### Overview
+The annual budget planning process will incorporate projected headcount growth, anticipated salary increases based on market data, and expected benefits costs. The Finance Department will work collaboratively with HR to ensure accurate forecasting.
+
+### Key Components
+- **Projected Salaries:** Based on salary bands and anticipated hires.
+- **Benefits Costs:** Calculated based on the employee population and utilization rates.
+- **Total Compensation Budget:** Total estimated costs combining salaries and benefits.
+
+### Timeline
+- **Q4 of Previous Year:** Review salary trends and benefit costs.
+- **Q1 of Current Year:** Finalize and approve the annual budget.
+
+---
+
+## 4. Quarterly Budget Reviews
+
+### Purpose
+Conducting quarterly budget reviews will allow for adjustments based on actual hiring trends, turnover rates, and market changes.
+
+### Process
+1. **Data Collection:** Gather data on actual expenditures versus budgeted amounts.
+2. **Analysis:** Review variances and adjust projections as necessary.
+3. **Reporting:** Produce a report detailing findings and recommendations for the executive team.
+
+### Participants
+- HR Manager 
+- Finance Analyst 
+- Executive Leadership 
+
+---
+
+## 5. Cost Optimization Strategies
+
+### Overview
+To maintain a competitive compensation package while managing costs effectively, the following strategies will be implemented:
+
+### Strategies
+1. **Market Benchmarking:** Regularly review market compensation data to ensure competitive salaries without overpaying.
+2. **Flexible Benefits:** Offer a customizable benefits package that allows employees to choose what best fits their needs.
+3. **Performance-Based Compensation:** Implement performance-based bonuses and incentives rather than broad salary increases.
+4. **Employee Retention Programs:** Invest in development and training programs to reduce turnover and associated hiring costs.
+5. **Remote Work Policies:** Evaluate the potential for cost savings through remote work arrangements.
+
+---
+
+By following the outlined compensation budget documentation and strategies, the organization aims to attract and retain top talent while maintaining fiscal responsibility.
